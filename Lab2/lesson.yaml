@@ -151,7 +151,7 @@
   Hint: Type boxplot(len~supp*dose) and press Enter.
   
 - Class: text
-  Ouput: There are two treatments (OJ and VC) and three blocks (0.5, 1, and 2 mg doses), so there are
+  Output: There are two treatments (OJ and VC) and three blocks (0.5, 1, and 2 mg doses), so there are
     2*3=6 total treatment settings. There are also 6 boxplots, one for each! 
     
 - Class: mult_question
