@@ -1,0 +1,190 @@
+- Class: meta
+  Course: STAT 100A
+  Lesson: Lab 2
+  Author: Lauren Cappiello
+  Type: Standard
+  Organization: University of California, Riverside
+  Version: 2.4.4
+  
+- Class: text
+  Output: Welcome to Lab 2, Sampling Principles, Experiments, and Numerical Data!
+
+- Class: mult_question
+  Output: Lab 2, July 31. Is this the correct lab? You must complete the lab for today's date.
+  CorrectAnswer: yes
+  AnswerChoices: yes; no
+  AnswerTests: omnitest(correctVal='yes')
+  Hint: If you accidentally ended up in the wrong lab, press Esc to leave Swirl. 
+    Then type swirl() and press Enter to start over.
+    
+- Class: text
+  Output: We will start today's lab thinking about associations between two numeric variables. 
+    
+- Class: figure
+  Output: The next few questions will involve these scatterplots (don't close out of them!). 
+  Figure: associations.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Which of the plots show a positive association?
+  CorrectAnswer: A and B
+  AnswerChoices: A and B; A; B; D; A and D; C
+  AnswerTests: omnitest(correctVal='A and B')
+  Hint: In a positive association, as one variable increases, the other variable also increases.
+  
+- Class: mult_question
+  Output: Which of the plots show a negative association?
+  CorrectAnswer: D
+  AnswerChoices: A and B; A; B; D; A and D; C
+  AnswerTests: omnitest(correctVal='D')
+  Hint: In a negative association, as one variable increases, the other variable decreases.
+  
+- Class: mult_question
+  Output: Which of the plots show a linear association?
+  CorrectAnswer: A and D
+  AnswerChoices: A and B; A; B; D; A and D; C
+  AnswerTests: omnitest(correctVal='A and D')
+  Hint: A linear association is when the points fall around a (straight) line.
+  
+- Class: mult_question
+  Output: Which of the plots show no association?
+  CorrectAnswer: C
+  AnswerChoices: A and B; A; B; D; A and D; C
+  AnswerTests: omnitest(correctVal='C')
+  Hint: If there is no association, you won't be able to draw a line/curve through the points.
+  
+
+  
+- Class: cmd_question
+  Output: Now let's spend some time thinking about populations and samples. The Tooth Growth dataset
+    examines the relationship between different vitamin C supplements and tooth growth in guinea pigs. 
+    Start by loading the data: type data(ToothGrowth) and then press Enter.
+  CorrectAnswer: data(ToothGrowth)
+  AnswerTests: omnitest(correctExpr='data(ToothGrowth)')
+  Hint: Type data(ToothGrowth) and press Enter.
+  
+- Class: mult_question
+  Output: Guinea pigs were given vitamin C in two forms: either orange juice or ascorbic acid. 
+    Suppose we want to know which supplement type is better for increasing tooth growth rates in 
+    guinea pigs. What is the population in this study?
+  CorrectAnswer: all guinea pigs
+  AnswerChoices: all guinea pigs; all guinea pig teeth\; all vitamin c supplements
+  AnswerTests: omnitest(correctVal='all guinea pigs')
+  Hint: Who or what is being sampled? (Recall that our sample recieves the treatment.)
+  
+- Class: mult_question
+  Output: What is the explanatory variable?
+  CorrectAnswer: supplement type
+  AnswerChoices: supplement type; guinea pigs; tooth length
+  AnswerTests: omnitest(correctVal='supplement type')
+  Hint: Which variable do we think explains one of the others?
+  
+- Class: mult_question
+  Output: What is the response variable?
+  CorrectAnswer: tooth length
+  AnswerChoices: supplement type; guinea pigs; tooth length
+  AnswerTests: omnitest(correctVal='tooth length')
+  Hint: Which variable do we think changes in response to something?
+  
+- Class: cmd_question
+  Output: Let's make the tooth growth data R's top priority. Type attach(ToothGrowth) and press Enter.
+  CorrectAnswer: attach(ToothGrowth)
+  AnswerTests: omnitest(correctExpr='attach(ToothGrowth)')
+  Hint: Type attach(ToothGrowth) and press Enter.
+  
+- Class: cmd_question
+  Output: Do you think supplement type impacts tooth growth? We can use a boxplot to visualize this 
+    relationship. Type boxplot(len~supp) and press Enter.
+  CorrectAnswer: boxplot(len~supp)
+  AnswerTests: omnitest(correctExpr='boxplot(len~supp)')
+  Hint: Type boxplot(len~supp) and press Enter.
+  
+- Class: text
+  Output: The boxplot shows two boxes, one for orange juice (OJ) and one for ascorbic acid (VC).
+    The y-axis shows length of odontoblasts, the cells responsible for guinea pigs' tooth growth.
+    
+- Class: mult_question
+  Output: Which supplement has a longer median cell length?
+  CorrectAnswer: orange juice (OJ)
+  AnswerChoices: orange juice (OJ); ascorbic acid (VC)
+  AnswerTests: omnitest(correctVal='orange juice')
+  Hint: Try again!
+  
+- Class: mult_question
+  Output: Which supplement has a greater spread in cell lengths?
+  CorrectAnswer: ascorbic acid
+  AnswerChoices: orange juice; ascorbic acid
+  AnswerTests: omnitest(correctVal='ascorbic acid') 
+  Hint: Try again!
+  
+- Class: mult_question
+  Output: What is the approximate interquartile range for the cell lengths for guinea pigs who
+    recieved orange juice?
+  CorrectAnswer: 26-15=11
+  AnswerChoices: 26-15=11; 31-8=23; 34-4=30; 23-11=12
+  AnswerTests: omnitest(correctVal='26-15=11')
+  Hint: Double check your numbers!
+   
+- Class: mult_question
+  Output: Are there any outliers?
+  CorrectAnswer: no
+  AnswerChoices: yes; no
+  AnswerTests: omnitest(correctVal='no')
+  Hint: Try again!
+  
+- Class: mult_question
+  Output: Now let's suppose that the guinea pigs recieved different doses of vitamin c supplements.
+    We are interested in whether dosage has an effect on how supplement type impacts the guinea 
+    pigs' tooth growth. How might we include dosages?
+  CorrectAnswer: add dose as a blocking factor
+  AnswerChoices: add dose as a blocking factor; do a bloxplot of the different doses; don't bother
+  AnswerTests: omnitest(correctVal='add dose as a blocking factor')
+  Hint: Think back to what we talked about in class...
+  
+- Class: cmd_question
+  Output: We can also visualize blocked data with boxplots! Think of each combination of treatment 
+    (supplement type) and block (dosage) as one "treatment". For example, OJ at 0.5 mg is one 
+    treatment setting and OJ at 1 mg is another treatment setting. Type boxplot(len~supp*dose)
+    and press Enter.
+  CorrectAnswer: boxplot(len~supp*dose)
+  AnswerTests: omnitest(correctExpr='boxplot(len~supp*dose)')
+  Hint: Type boxplot(len~supp*dose) and press Enter.
+  
+- Class: text
+  Ouput: There are two treatments (OJ and VC) and three blocks (0.5, 1, and 2 mg doses), so there are
+    2*3=6 total treatment settings. There are also 6 boxplots, one for each! 
+    
+- Class: mult_question
+  Output: Which treatment/block combination has the lowest median tooth growth cell length?
+  CorrectAnswer: VC with 0.5 mg
+  AnswerChoices: VC with 0.5 mg; VC with 1 mg; VC with 2 mg; OJ with 0.5 mg; OJ with 1 mg; OJ with 2 mg
+  AnswerTests: omnitest(correctVal='VC with 0.5 mg')
+  Hint: The axis labels show each treatment setting as TREATMENT.DOSE. Which one has the lowest median?
+  
+- Class: mult_question
+  Output: Which treatment/block combination has a potential outlier?
+  CorrectAnswer: VC with 1 mg
+  AnswerChoices: VC with 0.5 mg; VC with 1 mg; VC with 2 mg; OJ with 0.5 mg; OJ with 1 mg; OJ with 2 mg
+  AnswerTests: omnitest(correctVal='VC with 1 mg')
+  Hint: The axis labels show each treatment setting as TREATMENT.DOSE. Which one has a potential outlier?
+  
+- Class: cmd_question
+  Output: Earlier, we used the "attach" command to make the tooth growth data R's top priority, but now 
+    we're done looking at this data set. Let's free up R's memory for something else. Type 
+    detach(ToothGrowth) and press Enter.
+  CorrectAnswer: detach(ToothGrowth)
+  AnswerTests: omnitest(correctExpr='detach(ToothGrowth)')
+  Hint: Type detach(ToothGrowth) and press Enter.
+  
+  
+  
+  
+  
+  
+- Class: text
+  Output: You have successfully completed Lab 2! Way to go!
+
+- Class: text
+  Output: In order to recieve credit for Lab 2 (7/31/19), raise your hand and ask your TA to confirm 
+    that you have reached the end of the Swirl lesson. This will count as your lab grade and 
+     attendance for the day. 
