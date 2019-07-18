@@ -1,0 +1,6 @@
+par(mfrow=c(2,2))
+boxplot(v1, breaks=15, main="Boxplot A", xlab="", ylab="")
+boxplot(v2, breaks=15, main="Boxplot B", xlab="", ylab="")
+boxplot(v3, breaks=15, main="Boxplot C", xlab="", ylab="")
+boxplot(v4, breaks=15, main="Boxplot D", xlab="", ylab="")
+par(mfrow=c(1,1))

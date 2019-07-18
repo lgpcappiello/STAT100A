@@ -53,7 +53,88 @@
   AnswerTests: omnitest(correctVal='C')
   Hint: If there is no association, you won't be able to draw a line/curve through the points.
   
+- Class: figure
+  Output: Histograms show the distribution of data. This is an important consideration and something
+    we think about a lot in statistics! For example, consider these four histograms.
+  Figure: hists.R
+  FigureType: new
+  
+- Class: mult_question
+  Output: What do these histograms have in common?
+  CorrectAnswer: approximately the same means
+  AnswerChoices: nothing; approximately the same means; approximately the same standard deviations; 
+    approximately the same means and standard deviations
+  AnswerTests: omnitest(correctVal='approximately the same means')
+  Hint: Look carefully at the histograms.
+  
+- Class: text
+  Output: Right! They all come from populations with the same means (10). If we only looked at the 
+    averages, we would have no idea that we have four very different sets of data on our hands. 
+    
+- Class: mult_question
+  Output: Let's focus our attention on Histogram A. Do you expect the mean to be higher, lower, or 
+    about the same as the median?
+  CorrectAnswer: about the same
+  AnswerChoices: higher; lower; about the same
+  AnswerTests: omnitest(correctVal='about the same')
+  Hint: How do you think the middle of the data compares to the mean?
 
+- Class: cmd_question
+  Output: Let's check the details. First, let's see what the mean of our sample is. Remember that 
+    our population mean is 10. Type mean(v1) and press Enter.
+  CorrectAnswer: mean(v1)
+  AnswerTests: omnitest(correctExpr='mean(v1)')
+  Hint: Type mean(v1) and press Enter.
+  
+- Class: cmd_question
+  Output: Great, now let's check the median. Type median(v1) and press Enter.
+  CorrectAnswer: median(v1)
+  AnswerTests: omnitest(correctExpr='median(v1)')
+  Hint: Type median(v1) and press Enter.
+  
+- Class: text
+  Output: Both the mean and the median are close to 10, but notice that neither one is exactly 10.
+    This is because v1 is a random sample of the population. We can get a good estimate of the true
+    population mean, but we won't get the exact value. 
+    
+- Class: mult_question
+  Output: Now focus on on Histogram D. Do you expect the mean to be higher, lower, or about the 
+    same as the median?
+  CorrectAnswer: higher
+  AnswerChoices: higher; lower; about the same
+  AnswerTests: omnitest(correctVal='higher')
+  Hint: How do you think the middle of the data compares to the mean?
+  
+- Class: cmd_question
+  Output: Let's check the details. Let's see what the mean of our sample is. Remember that our 
+    population mean is still 10. Type mean(v4) and press Enter.
+  CorrectAnswer: mean(v4)
+  AnswerTests: omnitest(correctExpr='mean(v4)')
+  Hint: Type mean(v4) and press Enter.
+  
+- Class: cmd_question
+  Output: Great, now let's check the median. Type median(v4) and press Enter.
+  CorrectAnswer: median(v4)
+  AnswerTests: omnitest(correctExpr='median(v4)')
+  Hint: Type median(v4) and press Enter.
+  
+- Class: text
+  Output: Because our data has some outliers, the sample mean is quite a bit larger than the median. 
+    Sometimes, when we have outliers, the median gives us a better idea of the "middle" of the data 
+    than does the mean.
+    
+- Class: mult_question
+  Output: Which of these variables would be best represented by the median instead of the mean (choose 
+    the best answer)?
+  CorrectAnswer: California household income
+  AnswerChoices: California household income; height of UCR college students; duration of domestic flights
+  AnswerTests: omnitest(correctVal='California household income')
+  Hint: Which variable is most likely to have extreme outliers?
+  
+- Class: text
+  Output: Right. There are likely to be some outliers in height and flight duration, but household income
+    is likely to have the most extreme outliers. I certainly don't want my income compared to whatever Kim
+    Kardashian pulls in each year. 
   
 - Class: cmd_question
   Output: Now let's spend some time thinking about populations and samples. The Tooth Growth dataset
@@ -68,7 +149,7 @@
     Suppose we want to know which supplement type is better for increasing tooth growth rates in 
     guinea pigs. What is the population in this study?
   CorrectAnswer: all guinea pigs
-  AnswerChoices: all guinea pigs; all guinea pig teeth\; all vitamin c supplements
+  AnswerChoices: all guinea pigs; all guinea pig teeth; all vitamin c supplements
   AnswerTests: omnitest(correctVal='all guinea pigs')
   Hint: Who or what is being sampled? (Recall that our sample recieves the treatment.)
   
@@ -107,14 +188,14 @@
   Output: Which supplement has a longer median cell length?
   CorrectAnswer: orange juice (OJ)
   AnswerChoices: orange juice (OJ); ascorbic acid (VC)
-  AnswerTests: omnitest(correctVal='orange juice')
+  AnswerTests: omnitest(correctVal='orange juice (OJ)')
   Hint: Try again!
   
 - Class: mult_question
   Output: Which supplement has a greater spread in cell lengths?
-  CorrectAnswer: ascorbic acid
-  AnswerChoices: orange juice; ascorbic acid
-  AnswerTests: omnitest(correctVal='ascorbic acid') 
+  CorrectAnswer: ascorbic acid (VC)
+  AnswerChoices: orange juice (OJ); ascorbic acid (VC)
+  AnswerTests: omnitest(correctVal='ascorbic acid (VC)') 
   Hint: Try again!
   
 - Class: mult_question
@@ -175,11 +256,6 @@
   CorrectAnswer: detach(ToothGrowth)
   AnswerTests: omnitest(correctExpr='detach(ToothGrowth)')
   Hint: Type detach(ToothGrowth) and press Enter.
-  
-  
-  
-  
-  
   
 - Class: text
   Output: You have successfully completed Lab 2! Way to go!
