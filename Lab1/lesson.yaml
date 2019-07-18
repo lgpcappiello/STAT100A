@@ -1,0 +1,230 @@
+- Class: meta
+  Course: STAT 100A
+  Lesson: Lab 1
+  Author: Lauren Cappiello
+  Type: Standard
+  Organization: University of California, Riverside
+  Version: 2.4.4
+  
+- Class: text
+  Output: Welcome to Lab 1, Data Basics!
+
+- Class: mult_question
+  Output: Lab 1, July 29. Is this the correct lab? You must complete the lab for today's date.
+  CorrectAnswer: yes
+  AnswerChoices: yes; no
+  AnswerTests: omnitest(correctVal='yes')
+  Hint: If you accidentally ended up in the wrong lab, press Esc to leave Swirl. 
+    Then type swirl() and press Enter to start over.
+  
+- Class: text
+  Output: This lab is designed to get you working in R, a commonly used statistical 
+    programming environment. If you plan to go to graduate school, there is a good chance 
+    that you will be expected to work with R (or a similar software). If not, having 
+    some basic programming under your belt will help you on the job market!
+
+- Class: text
+  Output: These labs are designed to be easy to follow. Learning R is not a requirement 
+    for this course and you are welcome to copy everything down and do only what is necessary 
+    to finish your labs. However, you are encouraged to use the tools introduced during this 
+    course to experiment with R and learn more about this useful software tool!
+
+- Class: text
+  Output: If you decide to learn more about R, there are tons of free resources! Contact
+    your instructor for recommendations or spend some time exploring your options online.
+    
+- Class: text
+  Output: In this lesson, we will explore some basic building blocks of the R programming
+    language. We will use these to review some of the concepts discussed in class.
+
+- Class: cmd_question
+  Output: In its most basic form, R is just a big calculator! Try it out! Type 5 + 7 
+    and press Enter.
+  CorrectAnswer: 5 + 7
+  AnswerTests: omnitest(correctExpr='5 + 7')
+  Hint: Type 5 + 7 and press Enter.
+
+- Class: text
+  Output: R prints the result, 12, by default. However, R was designed to do a lot more 
+    than just work as a calculator! We can use R to do extended calculations, visualize
+    data, automate processes, and more.
+
+- Class: text
+  Output: Suppose want to use our result from above in an extended calculation.
+    Instead of retyping 5 + 7 every time we need it, we can create a new variable
+    that stores the result.
+
+- Class: text
+  Output: 'The way you assign a value to a variable in R is by using the assignment
+    operator, which is just a ''less than'' symbol followed by a ''minus'' sign. It
+    looks like a little arrow pointing to the left: <-'
+
+- Class: text
+  Output: The assignment operator "assigns" a value to whatever variable name the arrow is
+    "pointing" at. 
+
+- Class: cmd_question
+  Output: To assign the result of 5 + 7 to a variable called x, type x <- 5 + 7. This can 
+    be read as 'x is assigned 5 plus 7'. Give it a try!
+  CorrectAnswer: x <- 5 + 7
+  AnswerTests: any_of_exprs('x <- 5 + 7', 'x <- 7 + 5')
+
+- Class: text
+  Output: This time, R did not print the result. When you use the assignment operator, 
+    R assumes that we want to save that information for later instead of seeing it right 
+    away.
+
+- Class: cmd_question
+  Output: If we want to see what R has stored in x, we type x and press Enter. Try it out!
+  CorrectAnswer: x
+  AnswerTests: omnitest(correctExpr='x')
+  Hint: Type x and press Enter. This will automatically print the value of x.
+
+- Class: cmd_question
+  Output: For the rest of the lab, we will use one of R's many built in data sets. Type
+    data(mtcars) and press Enter. This will load the data set into R's environment.
+  CorrectAnswer: data(mtcars)
+  AnswerTests: omnitest(correctExpr='data(mtcars)')
+  Hint: Make sure you have typed data(mtcars) exactly as it appears, with no spaces or
+    capital letters.
+    
+- Class: cmd_question
+  Output: Now we are going to display the contents of the mtcars dataset. Type mtcars 
+    and press Enter.
+  CorrectAnswer: mtcars
+  AnswerTests: omnitest(correctExpr='mtcars')
+  Hint: Make sure you mtcars exactly as it appears, with no spaces or capital letters.
+  
+- Class: cmd_question
+  Output: You've successfully read the data set into R's environment and displayed it 
+    in a data matrix. Next, we will examine the mtcars data. Use the attach command to 
+    make this dataset R's top priority by typing attach(mtcars) and pressing Enter. 
+  CorrectAnswer: attach(mtcars)
+  AnswerTests: omnitest(correctExpr='attach(mtcars)')
+  Hint: Double check your spelling and make sure there are no spaces or capitalization.
+  
+- Class: cmd_question  
+  Output: Then, check the variable names. Type names(mtcars) and press Enter to see
+    the names of all of the variables in the mtcars data set.
+  CorrectAnswer: names(mtcars)
+  AnswerTests: omnitest(correctExpr='names(mtcars)')
+  Hint: Type names(mtcars) exactly as it appears here.
+
+- Class: cmd_question
+  Output: Now that we know the variable names, let's investigate some of the concepts from 
+    today's class. "mpg" is the miles per gallon for each car. Print the values from mpg by
+    typing mpg and pressing Enter.
+  CorrectAnswer: mpg
+  AnswerTests: omnitest(correctExpr='mpg')
+  Hint: Type mpg and press Enter.
+   
+- Class: mult_question
+  Output: What type of variable is mpg?
+  CorrectAnswer: numeric
+  AnswerChoices: categorical; numeric
+  AnswerTests: omnitest(correctVal='numeric')
+  Hint: 'Is this variable made up of numbers or categories?'
+  
+- Class: mult_question
+  Output: Is mpg a discrete or continuous variable?
+  CorrectAnswer: continuous
+  AnswerChoices: discrete; continuous
+  AnswerTests: omnitest(correctVal='continuous')
+  Hint: Think about the values in mpg. Do they have decimal places?
+  
+- Class: cmd_question
+  Output: Let's look at another variable, cyl. This is the number of cylinders. Type 
+    cyl and press Enter
+  CorrectAnswer: cyl
+  AnswerTests: omnitest(correctExpr='cyl')
+  Hint: Type cyl and press Enter.
+
+- Class: mult_question
+  Output: What type of variable is cyl?
+  CorrectAnswer: discrete numeric
+  AnswerChoices: discrete numeric; continuous numeric; categorical
+  AnswerTests: omnitest(correctVal='discrete numeric')
+  Hint: Think about the possible number of cylinders. 
+    Are there jumps from one number to the next?
+
+- Class: cmd_question
+  Output: If we want to know more about anything in R, we can request the help file
+    using a question mark before the thing we want to know about. Type ?mtcars and 
+    press Enter.
+  CorrectAnswer: ?mtcars
+  AnswerTests: omnitest(correctExpr='?mtcars')
+  Hint: Type ?mtcars and press Enter.
+
+- Class: mult_question
+  Output: Look at the help file to get more information on the variable am. What does this
+    variable represent?
+  CorrectAnswer: Transmission
+  AnswerChoices: Rear axle ratio; Transmission; Radio
+  AnswerTests: omnitest(correctVal='Transmission')
+  Hint: Look under the "Format" section in the help file for information on each variable. 
+  
+- Class: mult_question
+  Output: What type of variable is am?
+  CorrectAnswer: categorical
+  AnswerChoices: discrete numeric; continuous numeric; categorical
+  AnswerTests: omnitest(correctVal='categorical')
+  Hint: What does am represent?
+  
+- Class: mult_question
+  Output: What are the levels of am?
+  CorrectAnswer: 0 = automatic 1 = manual
+  AnswerChoices: 0 = automatic 1 = manual; A M; 0 = amplitude 1 = magnitude
+  AnswerTests: omnitest(correctVal='0 = automatic 1 = manual')
+  Hint: Look under the "Format" section in the help file for information on each variable.
+
+- Class: cmd_question
+  Output: Now let's think about the relationships between some of the variables. R has a lot 
+    of powerful plotting abilities, but let's stick to the basics for now with a simple 
+    scatterplot. Type plot(mpg, wt) and press Enter.
+  CorrectAnswer: plot(mpg, wt)
+  AnswerTests: omnitest(correctExpr="plot(mpg, wt)")
+  Hint: Type plot(mpg, wt) exactly as it appears.
+  
+- Class: figure
+  Output: We can also add a title and axis labels with plot(x=mpg, y=wt, main="Scatterplot 
+    of MPG vs Vehicle Weight", xlab="MPG", ylab="weight (1000 lbs)"). 
+    Here's what that looks like.
+  Figure: scatter1.R
+  FigureType: new
+  
+- Class: mult_question
+  Output: What does the plot suggest about the relationship between miles per gallon and a
+    vehicle's weight? What is the association between these two variables?
+  CorrectAnswer: negative association
+  AnswerChoices: positive association; negative association; no association
+  AnswerTests: omnitest(correctVal='negative association')
+  Hint: Is the trend upward or downward?
+
+- Class: text
+  Output: Does this relationship make sense to you? A really strange or unexpected relationship
+    is cause for further investigation! In this case, it makes sense that heavier cars might use 
+    up more gas than lighter cars.
+    
+- Class: figure
+  Output: Let's look at another plot. This time, we will examine the relationship between 
+    quarter mile time (qsec) and engine displacement (disp). The R command is plot(x=qsec, 
+    y=disp, main="Scatterplot of Quarter Mile Time vs Engine Displacement", 
+    xlab="1/4 Mile Time (sec)", ylab="Displacement")
+  Figure: scatter2.R
+  FigureType: new
+  
+- Class: mult_question
+  Output: What does the plot suggest about the relationship between quarter mile time and engine 
+    displacement? What is the association?
+  CorrectAnswer: no association
+  AnswerChoices: positive association; negative association; no association
+  AnswerTests: omnitest(correctVal='no association')
+  Hint: Is there a visible trend?
+  
+- Class: text
+  Output: You have successfully completed your first R lab for STAT 100A! Congrats! 
+
+- Class: text
+  Output: In order to recieve credit for Lab 1 (7/29/19), raise your hand and ask your TA to confirm 
+    that you have reached the end of the Swirl lesson. This will count as your lab grade and 
+     attendance for the day. 
