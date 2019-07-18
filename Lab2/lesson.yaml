@@ -58,7 +58,7 @@
 - Class: cmd_question
   Output: Now let's spend some time thinking about populations and samples. The Tooth Growth dataset
     examines the relationship between different vitamin C supplements and tooth growth in guinea pigs. 
-    Start by loading the data: type data(ToothGrowth) and then press Enter.
+    Start by loading the data. Type data(ToothGrowth) and then press Enter.
   CorrectAnswer: data(ToothGrowth)
   AnswerTests: omnitest(correctExpr='data(ToothGrowth)')
   Hint: Type data(ToothGrowth) and press Enter.
