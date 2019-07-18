@@ -64,7 +64,7 @@
   Hint: Type data(ToothGrowth) and press Enter.
   
 - Class: mult_question
-  Output: Guinea pigs were given vitamin C in two forms: either orange juice or ascorbic acid. 
+  Output: Guinea pigs were given vitamin C in two forms, either orange juice or ascorbic acid. 
     Suppose we want to know which supplement type is better for increasing tooth growth rates in 
     guinea pigs. What is the population in this study?
   CorrectAnswer: all guinea pigs
