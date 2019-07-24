@@ -258,6 +258,10 @@
   Hint: Type detach(ToothGrowth) and press Enter.
   
 - Class: text
+  Output: Great! In this case, we are not going to work with any other datasets, but removing attached 
+    data from R's memory is a good habit to get into when we finish working with something.
+  
+- Class: text
   Output: You have successfully completed Lab 2! Way to go!
 
 - Class: text
