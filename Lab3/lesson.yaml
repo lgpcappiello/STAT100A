@@ -189,14 +189,17 @@
     the true value of 1/6 = 0.1667. Your estimate should now be much closer to this value! If we repeated
     the previous few problems with 10000 or even 100000 rolls, we would get an even better estimate! 
     
-- Class: text
+- Class: figure
   Output: Now we are going to use the student survey data to examine probabilities with real data. I am 
     loading the data in behind the scences and building a contingency table in R.
-  
-- Class: figure
-  Output: Here is a table of the student survey data for college versus year in school.
   Figure: freqtab.R
   FigureType: new
+  
+- Class: cmd_question
+  Output: To view the table, type mytable and press Enter. Note that mytable is all one word.
+  CorrectAnswer: mytable
+  AnswerTests: omnitest(correctExpr="mytable")
+  Hint: Type mytable and press Enter.
   
 - Class: mult_question
   Output: For this class, are being a Sophomore and having a major in BCOE mutually exclusive?
