@@ -188,6 +188,35 @@
   Output: Recall that, when we did only two rolls, we got estimates like 0, 1/2, and 1 that were far from
     the true value of 1/6 = 0.1667. Your estimate should now be much closer to this value! If we repeated
     the previous few problems with 10000 or even 100000 rolls, we would get an even better estimate! 
+    
+- Class: text
+  Output: Now we are going to use the student survey data to examine probabilities with real data. I am 
+    loading the data in behind the scences and building a contingency table in R.
+  
+- Class: figure
+  Output: Here is a table of the student survey data for college versus year in school.
+  Figure: freqtab.R
+  FigureType: new
+  
+- Class: mult_question
+  Output: For this class, are being a Sophomore and having a major in BCOE mutually exclusive?
+  AnswerChoices: yes;no
+  CorrectAnswer: yes
+  AnswerTests: omnitest(correctVal='yes')
+  Hint: Is there any overlap between Sophomores and BCOE?
+  
+- Class: cmd_question
+  Output: What is the probability that a randomly selected CNAS student is a Junior?
+  CorrectAnswer: 26/52
+  AnswerTests: omnitest(correctVal = 26/52)
+  Hint: Find the number of CNAS students who are also Juniors out of the total number of CNAS students.
+  
+- Class: cmd_question
+  Output: What is the probability that a randomly student is a Senior OR is in CHASS?
+  CorrectAnswer: (25/65)+(4/65)-(3/65)
+  AnswerTests: omnitest(correctVal = 0.4)
+  Hint: Find P(Senior) and P(CHASS). Then find P(Senior and CHASS) - remember not to double count 
+    these students!
   
 - Class: text
   Output: You have successfully completed Lab 3! Way to go!
