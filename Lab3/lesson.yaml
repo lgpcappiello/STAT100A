@@ -13,9 +13,175 @@
   AnswerTests: omnitest(correctVal='yes')
   Hint: If you accidentally ended up in the wrong lab, press Esc to leave Swirl. 
     Then type swirl() and press Enter to start over.
+
+- Class: text
+  Output: This week, we are talking about probability. So far, we've discussed general definitions
+    and gotten started with conditional probability. Lab 3 will review some of these concepts and
+    ask you to start computing basic probabilities.
+    
+- Class: text
+  Output: Let's start simple. We talked a lot about rolling a six-sided die. Let A={3,4} be the event
+    that we roll a 3 or a 4. Throughout this lab, we will enter probabilities as fractions. For example,
+    to enter the probability that event A occurs, we could write 2/6 or simplify to 1/3.
+    
+- Class: cmd_question
+  Output: Let's try that now. Enter the probability that the event A occurs by typing either 1/3 or 
+    2/6 and pressing Enter.
+  CorrectAnswer: 1/3
+  AnswerTests: omnitest(correctVal = 1/3)
+
+- Class: cmd_question
+  Output: Let's do another one. Let B={2,4,6} be the event that we roll an even number. Find P(B) 
+    and type the fraction into R, then press Enter.
+  CorrectAnswer: 1/2
+  AnswerTests: omnitest(correctVal = 1/2)
   
+- Class: text
+  Output: Roulette involves spinning a wheel with 38 total slots: 18 red, 18 black, and 2 green. A ball 
+    is spun onto the wheel and eventually lands in a slot. There is an equal chance for each slot to
+    capture the ball. 
 
+- Class: cmd_question
+  Output: You watch a roulette wheel spin 3 consecutive times and each time the ball lands in a red slot.
+    What is the probability that the ball will land on a red slot on the next spin?
+  CorrectAnswer: 18/38
+  AnswerTests: omnitest(correctVal = 18/38)
+  Hint: There are 18 red slots and 38 total slots.
+  
+- Class: text
+  Output: There are 5 questions on a multiple choice math exam. Each question has 4 choices and only one 
+    correct answer. You give the exam to a monkey, who knows nothing about math and chooses answers at 
+    random. 
 
+- Class: cmd_question
+  Output: What is the probability that the monkey gets the first question correct?
+  CorrectAnswer: 1/4
+  AnswerTests: omnitest(correctVal = 1/4)
+  Hint: There are 4 choices and only 1 correct answer.
+  
+- Class: cmd_question
+  Output: What is the probability that the first question the monkey gets correct is the 3rd question?
+  CorrectAnswer: 9/64
+  AnswerTests: omnitest(correctVal = 9/64)
+  Hint: Find the probabilty that the first question was incorrect AND the second question was incorrect
+    AND the third question was correct. 
+    
+- Class: cmd_question
+  Output: What is the probability that the monkey gets all of the questions correct?
+  CorrectAnswer: 1/1024
+  AnswerTests: omnitest(correctVal = 1/1024)
+  Hint: Find the probabilty that first is correct AND second is correct AND third is correct AND fourth 
+    is correct AND fifth is correct. Remember that each question has 1 correct answer out of 4 possible
+    choices.
+    
+- Class: text
+  Output: For the next several questions, let A and B be independent events such that P(A)=0.2 
+    and P(B)=0.8.
+  
+- Class: cmd_question
+  Output: Find P(A and B).
+  CorrectAnswer: 0.16
+  AnswerTests: omnitest(correctVal = 0.16)
+  Hint: Remember the multiplication rule for independent events: P(A and B) = P(A) x P(B).
+  
+- Class: cmd_question
+  Output: Find P(A or B)
+  CorrectAnswer: 1
+  AnswerTests: omnitest(correctVal = 1)
+  Hint: Remember the addition rule for independent events: P(A or B) = P(A) + P(B).
+  
+- Class: cmd_question
+  Output: Find P(A | B)
+  CorrectAnswer: 0.2
+  AnswerTests: omnitest(correctVal = 0.2)
+  Hint: Remember the conditional probability formula: P(A | B) = P(A and B) / P(B).
+  
+- Class: text
+  Output: Recall that the Law of Large Numbers is the tendency for an estimate to converge to the true
+    value. We will demonstrate this using simulations.
+    
+- Class: cmd_question
+  Output: We are going to simulate rolling a six-sided die. First, what is the probability that we roll
+    a 6?
+  CorrectAnswer: 1/6
+  AnswerTests: omnitest(correctVal = 1/6)
+  Hint: There are six sides and only one side is a 6.
+  
+- Class: cmd_question
+  Output: Let's simulate a single roll of the die. We do this by taking a single random sample of size 1
+    from the numbers 1, 2, 3, 4, 5, and 6. Type sample(c(1,2,3,4,5,6), size=1) and press Enter.
+  CorrectAnswer: sample(c(1,2,3,4,5,6), size=1)
+  AnswerTests: any_of_exprs('sample(c(1,2,3,4,5,6), size=1)', 'sample(1:6, size=1)')
+  Hint: Type sample(c(1,2,3,4,5,6), size=1) and press Enter.
+  
+- Class: text
+  Output: We estimate the probability of rolling a 6 by taking the total number of times we rolled a 
+    6 and dividing by the total number of rolls. We have one total roll. If you rolled a 6, the 
+    current estimate is 1/1=1. If you did not roll a 6, the current estimate is 0/1=0.
+    
+- Class: cmd_question
+  Output: Let's simulate another roll of the die. Type sample(c(1,2,3,4,5,6), size=1) and press Enter.
+  CorrectAnswer: sample(c(1,2,3,4,5,6), size=1)
+  AnswerTests: any_of_exprs('sample(c(1,2,3,4,5,6), size=1)', 'sample(1:6, size=1)')
+  Hint: Type sample(c(1,2,3,4,5,6), size=1) and press Enter.
+  
+- Class: text
+  Output: We again estimate the probability of rolling a 6 by taking the total number of times we 
+    rolled a 6 and dividing by the total number of rolls. Now we have two total rolls. If you 
+    rolled two 6s, the current estimate is 2/2=1. If you rolled one 6 and one that was not a 6, the
+    current estimate is 1/2. If both of your rolls were not 6s, the current estimate is 0/2=0.
+    
+- Class: text
+  Output: We want to do this hundreds or even thousands of times to demonstrate the Law of Large Numbers.
+    Fortunately, we don't need to take one sample at a time the way we have been. We will take a sample 
+    of size 1000, meaning that we will simulate rolling a six-sided die 1000 times. This time we will
+    include "replace=TRUE" in our sample command. Think of this like drawing raffle tickets. 
+    "Replace=TRUE" means that we put a raffle ticket back after it's been drawn so that we are able 
+    to draw it multiple times.
+
+- Class: cmd_question
+  Output: Let's do our simulation of 1000 rolls. We want to store this information so that we can
+    easily calculate how many times we rolled a 6. Type rolls <- sample(c(1,2,3,4,5,6), size=1000, 
+    replace=TRUE) and press Enter.
+  CorrectAnswer: rolls <- sample(c(1,2,3,4,5,6), size=1000, replace=TRUE)
+  AnswerTests: any_of_exprs('rolls <- sample(c(1,2,3,4,5,6), size=1000, replace=TRUE)', 
+    'rolls <- sample(c(1:6), size=1000, replace=TRUE)')
+  Hint: Type rolls <- sample(c(1,2,3,4,5,6), size=1000, replace=TRUE) and press Enter.
+  
+- Class: cmd_question
+  Output: Now that we have 1000 rolls of our six-sided die, we want to count the number of times that we
+    rolled a 6. We will ask R to check whether each roll is a 6 using some true/false logic. Type
+    is6 <- rolls == 6 and press Enter. Be careful not to put a space between "is" and "6" in the variable 
+    name and make sure to use TWO equal signs.
+  CorrectAnswer: is6 <- rolls == 6
+  AnswerTests: omnitest(correctExpr='is6 <- rolls == 6')
+  Hint: Carefully type is6 <- rolls == 6 and press Enter.
+  
+- Class: cmd_question
+  Output: Now we want to count how many times we rolled a six. Previously, we asked R to check for 6s. 
+    R went through our rolls and entered TRUE (1) for 6 and FALSE (0) for everything else. Since all of 
+    the TRUEs are saved as a 1, we can count the number of 6s by summing over our is6 variable. 
+    Type sum(is6) and press Enter.
+  CorrectAnswer: sum(is6)
+  AnswerTests: omnitest(correctExpr='sum(is6)')
+  Hint: Carefully type sum(is6) and press Enter.
+  
+- Class: text
+  Output: This is the total number of times we rolled a 6 in 1000 rolls!
+  
+- Class: cmd_question
+  Output: Now we want to estimate the probability of rolling a six. We know that we did 1000 total rolls
+    and we've already figured out how to count the total number of times we rolled a 6. Now all we need
+    to do is divide the total number of times we rolled a 6 by the total number of rolls. Type 
+    sum(is6)/1000 and press Enter.
+  CorrectAnswer: sum(is6)/1000
+  AnswerTests: omnitest(correctExpr='sum(is6)/1000')
+  Hint: Carefully type sum(is6)/1000 and press Enter.
+  
+- Class: text
+  Output: Recall that, when we did only two rolls, we got estimates like 0, 1/2, and 1 that were far from
+    the true value of 1/6 = 0.1667. Your estimate should now be much closer to this value! If we repeated
+    the previous few problems with 10000 or even 100000 rolls, we would get an even better estimate! 
   
 - Class: text
   Output: You have successfully completed Lab 3! Way to go!
