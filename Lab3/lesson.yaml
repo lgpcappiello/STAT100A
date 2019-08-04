@@ -29,17 +29,19 @@
     2/6 and pressing Enter.
   CorrectAnswer: 1/3
   AnswerTests: omnitest(correctVal = 1/3)
+  Hint: Type 1/3 and press Enter OR type 2/6 and press Enter.
 
 - Class: cmd_question
   Output: Let's do another one. Let B={2,4,6} be the event that we roll an even number. Find P(B) 
     and type the fraction into R, then press Enter.
   CorrectAnswer: 1/2
   AnswerTests: omnitest(correctVal = 1/2)
+  Hint: How many values are in B? How many possible rolls are there?
   
 - Class: text
-  Output: Roulette involves spinning a wheel with 38 total slots: 18 red, 18 black, and 2 green. A ball 
-    is spun onto the wheel and eventually lands in a slot. There is an equal chance for each slot to
-    capture the ball. 
+  Output: Roulette involves spinning a wheel with 38 total slots. These are broken down into 18 red, 
+    18 black, and 2 green. A ball is spun onto the wheel and eventually lands in a slot. There is 
+    an equal chance for each slot to capture the ball. 
 
 - Class: cmd_question
   Output: You watch a roulette wheel spin 3 consecutive times and each time the ball lands in a red slot.
@@ -67,7 +69,7 @@
     AND the third question was correct. 
     
 - Class: cmd_question
-  Output: What is the probability that the monkey gets all of the questions correct?
+  Output: What is the probability that the monkey gets all of the five questions correct?
   CorrectAnswer: 1/1024
   AnswerTests: omnitest(correctVal = 1/1024)
   Hint: Find the probabilty that first is correct AND second is correct AND third is correct AND fourth 
@@ -82,19 +84,19 @@
   Output: Find P(A and B).
   CorrectAnswer: 0.16
   AnswerTests: omnitest(correctVal = 0.16)
-  Hint: Remember the multiplication rule for independent events: P(A and B) = P(A) x P(B).
+  Hint: Remember the multiplication rule for independent events! P(A and B) = P(A) x P(B).
   
 - Class: cmd_question
   Output: Find P(A or B)
   CorrectAnswer: 1
   AnswerTests: omnitest(correctVal = 1)
-  Hint: Remember the addition rule for independent events: P(A or B) = P(A) + P(B).
+  Hint: Remember the addition rule for independent events! P(A or B) = P(A) + P(B).
   
 - Class: cmd_question
   Output: Find P(A | B)
   CorrectAnswer: 0.2
   AnswerTests: omnitest(correctVal = 0.2)
-  Hint: Remember the conditional probability formula: P(A | B) = P(A and B) / P(B).
+  Hint: Remember that A and B are independent events.
   
 - Class: text
   Output: Recall that the Law of Large Numbers is the tendency for an estimate to converge to the true
@@ -134,10 +136,14 @@
 - Class: text
   Output: We want to do this hundreds or even thousands of times to demonstrate the Law of Large Numbers.
     Fortunately, we don't need to take one sample at a time the way we have been. We will take a sample 
-    of size 1000, meaning that we will simulate rolling a six-sided die 1000 times. This time we will
-    include "replace=TRUE" in our sample command. Think of this like drawing raffle tickets. 
+    of size 1000, meaning that we will simulate rolling a six-sided die 1000 times. 
+    
+- Class: text
+  Output: This time we will include "replace=TRUE" in our sample command. Think of this like drawing raffle tickets. 
     "Replace=TRUE" means that we put a raffle ticket back after it's been drawn so that we are able 
-    to draw it multiple times.
+    to draw it multiple times. If we roll a die multiple times, we expect that at some point we will see
+    the same number appear more than once. (If our first roll is a 1, it's possible for us to roll a 1
+    again later.)
 
 - Class: cmd_question
   Output: Let's do our simulation of 1000 rolls. We want to store this information so that we can
