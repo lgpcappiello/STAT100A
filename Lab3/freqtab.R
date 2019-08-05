@@ -1,4 +1,4 @@
-survey <- read.csv("http://lgpcappiello.github.io/teaching/stat100a/Rcode/studentsurvey.csv")
+survey <- read.csv("http://lgpcappiello.github.io/teaching/stat100a/Rcode/studentsurvey.csv", fileEncoding="UTF-8-BOM")
 college <- ifelse(survey$major == "Anthropology" | survey$major == "Sociology" | 
                     survey$major == "Public Policy" | survey$major == "Music", "CHASS",
                   ifelse(survey$major == "Biochemistry" | survey$major == "Biology" | 
