@@ -88,9 +88,9 @@
   
 - Class: cmd_question
   Output: Find P(A or B)
-  CorrectAnswer: 1
-  AnswerTests: omnitest(correctVal = 1)
-  Hint: Remember the addition rule for independent events! P(A or B) = P(A) + P(B).
+  CorrectAnswer: .8+.2-.16
+  AnswerTests: omnitest(correctVal = 0.84)
+  Hint: Remember the addition rule! P(A or B) = P(A) + P(B) - P(A and B).
   
 - Class: cmd_question
   Output: Find P(A | B)
