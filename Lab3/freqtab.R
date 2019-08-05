@@ -10,8 +10,8 @@ college <- ifelse(survey$major == "Anthropology" | survey$major == "Sociology" |
                          ifelse(survey$major == "Business Econ" | survey$major == "Business Economics",
                                 "SOBA", "BCOE")))
 mytable <- table(college,survey$year)
-YearTotal <- colSums(mytable)
-CollegeTotal <- c(rowSums(mytable), sum(YearTotal))
+CollegeTotal <- colSums(mytable)
+YearTotal <- c(rowSums(mytable), sum(YearTotal))
 mytable <- rbind(mytable,YearTotal)
 mytable <- cbind(mytable,CollegeTotal)
 mytable
