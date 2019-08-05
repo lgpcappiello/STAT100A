@@ -1,5 +1,4 @@
 survey <- read.csv("http://lgpcappiello.github.io/teaching/stat100a/Rcode/studentsurvey.csv")
-levels(survey$year) <- c("Sophomore","Junior","Senior","Other")
 college <- ifelse(survey$major == "Anthropology" | survey$major == "Sociology" | 
                     survey$major == "Public Policy" | survey$major == "Music", "CHASS",
                   ifelse(survey$major == "Biochemistry" | survey$major == "Biology" | 
