@@ -14,8 +14,188 @@
   Hint: If you accidentally ended up in the wrong lab, press Esc to leave Swirl. 
     Then type swirl() and press Enter to start over.
   
+- Class: text
+  Output: We will begin today's lab by working through some conditional probability exercises. 
+    Suppose 80% of people like peanut butter, 89% like jelly, and 78% like both. Given that a 
+    randomly sampled person likes peanut butter, we want to find the probability that they also 
+    like jelly.
 
+- Class: text
+  Output: Let J be the event that someone likes jelly and PB the event that someone likes peanut 
+    butter.
+    
+- Class: mult_question
+  Output: How would we write the desired information in probability notation?
+  CorrectAnswer: P(J | PB)
+  AnswerChoices: P(J | PB); P(PB); P(J); P(PB and J); P(PB | J)
+  AnswerTests: omnitest(correctVal='P(J | PB)')
+  Hint: We want to find the probability that someone likes jelly given that they like peanut butter.
+  
+- Class: mult_question
+  Output: What information do we need in order to calculate this probability?
+  CorrectAnswer: P(PB) and P(PB and J)
+  AnswerChoices: P(PB) and P(PB and J); P(J) and P(PB and J); P(J) and P(PB); P(PB), P(J), and 
+    P(PB and J)
+  AnswerTests: omnitest(correctVal='P(PB) and P(PB and J)')
+  Hint: What's the formula for calculating a conditional probability?
+  
+- Class: cmd_question
+  Output: Find P(J | PB). Recall that 80% of people like peanut butter, 89% like jelly, and 78% 
+    like both.
+  CorrectAnswer: 0.78 / 0.80
+  AnswerTests: omnitest(correctVal=0.975)
+  Hint: It may be helpful to write the information from the problem statement in probability notation.
+    For example, P(PB and J) = P(both) = 0.78
+    
+- Class: text
+  Output: After an introductory statistics course, 80% of students can successfully construct box 
+    plots. Of those who can construct box plots, 86% passed, while only 65% of those students who 
+    could not construct box plots passed. We want to find the probability that a student is able 
+    to construct a box plot if it is known that he passed.
+    
+- Class: mult_question
+  Output: Which formula will we use to calculate this probability?
+  CorrectAnswer: Bayes Theorem
+  AnswerChoices: Bayes Theorem; conditional probability; addition rule; mutiplication rule
+  AnswerTests: omnitest(correctVal='Bayes Theorem')
+  Hint: We know the probability that a student passed given that he can construct box plots. 
+    We want to flip this around and find the probability that a student can construct box plots given 
+    that he passed.
+    
+- Class: text
+  Output: Let A be the event that a student passed the class. Let B be the event that a student can 
+    construct box plots. 
+    
+- Class: mult_question
+  Output: What is our desired probability?
+  CorrectAnswer: P(B | A)
+  AnswerChoices: P(A and B); P(B); P(A); P(B | A)
+  AnswerTests: omnitest(correctVal='P(B | A)')
+  Hint: We want to find probability that a student is able to construct a box plot if it is given 
+    that he passed.
+    
+- Class: text
+  Output: Let's write the information from the probability statement in iur probability notation. 
+  
+- Class: text
+  Output: P(B) = 0.80, P(A | B) = 0.86, P(A | not B) = 0.65
+    
+- Class: text
+  Output: Bayes Theorem gives us a way to rewrite P(B | A) = P(A and B) / P(A).
+  
+- Class: cmd_question
+  Output: Let's start by calculating P(A and B) = P(A | B)P(B). Find this value now.
+  CorrectAnswer: 0.86 x 0.80
+  AnswerTests: omnitest(correctVal=0.86*0.80)
+  Hint: Look back to where we wrote our information out in probability notation.
+  
+- Class: cmd_question
+  Output: Now we want to calculate P(A). Find this value now.
+  CorrectAnswer: 0.80 × 0.86 + 0.20 × 0.65
+  AnswerTests: omnitest(correctVal=0.80*0.86 + 0.20*0.65)
+  Hint: Use the Law of Total Probability to calculate P(A). Remember that this is the sum of
+    all of the joint probabilities where A occurs.
+    
+- Class: cmd_question
+  Output: Use these calculations to find P(B | A). Round your answer to 3 decimal places.
+  CorrectAnswer: 0.841
+  AnswerTests: omnitest(correctVal=0.841)
+  Hint: Plug your calculations back into Bayes Theorem. Then carefully round to 3 decimal places.
+  
+- Class: text
+  Output: Suppose we pick three people at random. For each of the following questions, ignore the 
+    special case where someone might be born on February 29th, and assume that births are evenly 
+    distributed throughout the year. Recall that there are 365 days in a year.
 
+- Class: cmd_question
+  Output: What is the probability that the first two people share a birthday? Enter your answer 
+    as a fraction.
+  CorrectAnswer: (365/365) x (1/365) = 1/365
+  AnswerTests: omnitest(correctVal=1/365)
+  Hint: The first person's birthday can be any day of the year. Then the second person's birthday must
+    be on the specific day that the fist person's birthday falls on. What is the probability that 
+    person 2's birthday is on a specific day?
+
+- Class: cmd_question
+  Output: What is the probability that at least two of the three people share a birthday? Enter your 
+    answer rounded to 3 decimal places.
+  CorrectAnswer: 1 - (365/365)x(364/365)x(363/365) = 0.008
+  AnswerTests: omnitest(correctVal=0.008)
+  Hint: It may be easier to think of the probability that none of the people share a birthday and take
+    the complement. Note that if my birthday is April 11, there is a 364/365 chance that you and I do 
+    not share a birthday. 
+    
+- Class: text
+  Output: An airline charges the following baggage fees $25 for the first bag and $35 for the second. 
+    Suppose 54% percent of passengers have no checked luggage, 34% percent have one piece of checked 
+    luggage and 12% percent have two pieces. Assume nobody checks more than two bags.
+    
+- Class: text
+  Output: We can set this up in probability notation. Let X be the amount of money spent to check bags.
+    Zero bags costs $0, one bag costs $25, and two bags costs $25 + $35 = $60. 
+    
+- Class: text
+  Output: P(no bags) = P(X = 0) = 0.54
+  
+- Class: text
+  Output: P(one bag) = P(X = 25) = 0.34
+  
+- Class: text
+  Output: P(two bags) = P(X = 60) = 0.12
+    
+- Class: cmd_question
+  Output: Compute the average revenue per passenger.
+  CorrectAnswer: 0.54 x 0 + 0.34 x 25 + 0.12 x 60 = 15.7
+  AnswerTests: omnitest(correctVal=15.7)
+  Hint: Double check the expected value formula from Section 3.4 or from the Aug 6 course notes.
+  
+- Class: cmd_question
+  Output: Find the variance of the revenue per passenger.
+  CorrectAnswer: 0.54 x (0-15.7)^2 + 0.34 x (25-15.7)^2 + 0.12 x (60-15.7)^2 = 398.01
+  AnswerTests: omnitest(correctVal=398.01)
+  Hint: Double check the variance formula from Section 3.4 or from the Aug 6 course notes.
+  
+- Class: cmd_question
+  Output: Find the standard deviation of the revenue per passenger. Since these quantities are in 
+    dollars, round your answer to 2 decimal places.
+  CorrectAnswer: sqrt(398.01) = 19.95
+  AnswerTests: omnitest(correctVal=19.95)
+  Hint: The standard deviation is the square root of the variance. Remember to round to 2 decimal 
+    places.
+  
+- Class: figure
+  Output: R is running a little bit of code to construct a probability distribution for income in
+    the United States.
+  Figure: incomeTable.R
+  FigureType: new
+  
+- Class: cmd_question
+  Output: To view the probability distribution, type table and press Enter.
+  CorrectAnswer: table
+  AnswerTests: omnitest(correctExpr="table")
+  Hint: Type table and press Enter.
+  
+- Class: mult_question
+  Output: Is this a valid probability distribution?
+  CorrectAnswer: yes
+  AnswerChoices: yes; no
+  AnswerTests: omnitest(correctVal='yes')
+  Hint: Check our three conditions. Disjoint outcomes, probabilities between 0 and 1, and all 
+    probabilities sum to 1.
+    
+- Class: mult_question
+  Output: Describe this distribution. Is it skewed or symmetric.
+  CorrectAnswer: right-skewed 
+  AnswerChoices: right-skewed; left-skewed; symmetric
+  AnswerTests: omnitest(correctVal='right-skewed')
+  Hint: It may be helpful to sketch out the distribution using the provided proportions.
+  
+- Class: cmd_question
+  Output: What is the probability that a randomly chosen US resident makes less than $50,000 
+    per year?
+  CorrectAnswer: 0.212 + 0.183 + 0.158 + 0.047 + 0.022 = 0.622
+  AnswerTests: omnitest(correctVal=0.622)
+  Hint: We want to include everyone who makes less than $50,000.
   
 - Class: text
   Output: You have successfully completed Lab 4! Way to go!
