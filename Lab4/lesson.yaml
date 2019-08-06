@@ -97,10 +97,9 @@
     all of the joint probabilities where A occurs.
     
 - Class: cmd_question
-  Output: Use these calculations to find P(B | A). You may use R as your calculator and forgo rounding 
-    OR you may round your answer to 3 decimal places.
+  Output: Use these calculations to find P(B | A). Round your answer to 3 decimal places.
   CorrectAnswer: 0.841
-  AnswerTests: omnitest(correctExpr=0.841, correctVal=(0.86*0.80)/(0.80*0.86 + 0.20*0.65))
+  AnswerTests: omnitest(correctVal=0.841)
   Hint: Plug your calculations back into Bayes Theorem. Then carefully round to 3 decimal places.
   
 - Class: text
@@ -118,10 +117,10 @@
     person 2's birthday is on a specific day?
 
 - Class: cmd_question
-  Output: What is the probability that at least two of the three people share a birthday? You may 
-    use R as your calculator and forgo rounding OR you may round to 3 decimal places.
+  Output: What is the probability that at least two of the three people share a birthday? Round to 3 
+    decimal places.
   CorrectAnswer: 1 - (365/365)x(364/365)x(363/365) = 0.008
-  AnswerTests: omnitest(correctExpr=0.008, correctVal=1 - (365/365)*(364/365)*(363/365))
+  AnswerTests: omnitest(correctVal=0.008)
   Hint: It may be easier to think of the probability that none of the people share a birthday and take
     the complement. Note that if my birthday is April 11, there is a 364/365 chance that you and I do 
     not share a birthday. 
@@ -160,7 +159,7 @@
   Output: Find the standard deviation of the revenue per passenger. Since these quantities are in 
     dollars, round your answer to 2 decimal places.
   CorrectAnswer: sqrt(398.01) = 19.95
-  AnswerTests: omnitest(correctVal=19.95, correctExpr=sqrt(398.01))
+  AnswerTests: omnitest(correctVal=19.95)
   Hint: The standard deviation is the square root of the variance. Remember to round to 2 decimal 
     places.
   
