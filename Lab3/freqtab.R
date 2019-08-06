@@ -1,5 +1,4 @@
-survey <- read.csv("http://lgpcappiello.github.io/teaching/stat100a/Rcode/studentsurvey.csv")
-levels(survey$year) <- c("Sophomore","Junior","Senior","Other")
+survey <- read.csv("http://lgpcappiello.github.io/teaching/stat100a/Rcode/studentsurvey.csv", fileEncoding="UTF-8-BOM")
 college <- ifelse(survey$major == "Anthropology" | survey$major == "Sociology" | 
                     survey$major == "Public Policy" | survey$major == "Music", "CHASS",
                   ifelse(survey$major == "Biochemistry" | survey$major == "Biology" | 
@@ -9,9 +8,9 @@ college <- ifelse(survey$major == "Anthropology" | survey$major == "Sociology" |
                            survey$major == "Neuroscience" | survey$major == "Statistics", "CNAS",
                          ifelse(survey$major == "Business Econ" | survey$major == "Business Economics",
                                 "SOBA", "BCOE")))
-mytable <- table(college,year)
-YearTotal <- colSums(mytable)
-CollegeTotal <- c(rowSums(mytable), sum(YearTotal))
-mytable <- rbind(mytable,YearTotal)
+mytable <- table(college,survey$year)
+CollegeTotal <- rowSums(mytable)
+YearTotal <- c(colSums(mytable), sum(CollegeTotal))
 mytable <- cbind(mytable,CollegeTotal)
+mytable <- rbind(mytable,YearTotal)
 mytable
