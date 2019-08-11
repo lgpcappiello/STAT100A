@@ -13,9 +13,218 @@
   AnswerTests: omnitest(correctVal='yes')
   Hint: If you accidentally ended up in the wrong lab, press Esc to leave Swirl. 
     Then type swirl() and press Enter to start over.
+    
+- Class: text
+  Output: Today's lab is on the normal distribution. We will practice calculating Z-scores and
+    normal probabilities. We will also demonstrate how we can use R to find tail area using a 
+    Z-score and to find Z-scores using a percentile.
+
+- Class: text
+  Output: Although the lab requirements are limited to what you do in the R console, I recommend
+    pulling out a piece of paper and drawing out your normal curves for each problem! This will
+    help cement some of these ideas and is a good way to keep track of tail area problems. 
+    
+- Class: text
+  Output: Suppose we have a normal distribution with mean mu=19 and standard deviation sigma=3, 
+    N(19, 3). We can find the Z-score using our formula, (x - mu)/(sigma).
+    
+- Class: cmd_question
+  Output: Let's find the Z-score for x=12 from N(19,3). Type (12 - 19)/3 and press Enter. 
+  CorrectAnswer: (12 - 19)/3 = -2.33
+  AnswerTests: omnitest(correctVal = (12 - 19)/3)
+  Hint: R is a big calculator! Type (12 - 19)/3 and press Enter.
   
+- Class: cmd_question
+  Output: Great, now let's calculate the left-tail area, or P(X < 12) where X is from a N(19,3) 
+    distribution. We've already calculated the Z-score as -2.33. Type pnorm(-2.33) and press 
+    Enter to find this tail area.
+  CorrectAnswer: pnorm(-2.33)
+  AnswerTests: omnitest(correctExpr = 'pnorm(-2.33)')
+  Hint: Type pnorm(-2.33) and press Enter.
+  
+- Class: cmd_question
+  Output: We can also use R to find Z-scores when given a percentile. Suppose we wanted to know
+    the 80th percentile for our N(19,3) distribution. Type qnorm(0.80) and press Enter. 
+  CorrectAnswer: qnorm(0.80)
+  AnswerTests: omnitest(correctExpr = 'qnorm(0.80)')
+  Hint: Type qnorm(0.80) and press Enter.
+  
+- Class: cmd_question
+  Output: Now we can use this Z-score (z = 0.84) to find the corresponding value at the 80th 
+    percentile of our N(19,3) distribution. Solving for x, x = z*sigma + mu. Type 0.84*3 + 19 
+    and press Enter.
+  CorrectAnswer: 0.84*3 + 19
+  AnswerTests: omnitest(correctExpr = '0.84*3 + 19')
+  Hint: Type 0.84*3 + 19 and press Enter.
+  
+- Class: text
+  Output: Great! Those are the core concepts that you will need to be able to complete the 
+    rest of this lab.
+    
+- Class: text
+  Output: Let's use R to demonstrate the 68-95-99.7 Rule. We expect 68% of the area to fall within 
+    1 standard deviation of the mean. Since this corresponds to Z-scores of -1 and 1, we can use 
+    our Z-scores to demonstrate this! We want the area between -1 and 1 on a standard normal distribution,
+    N(0,1). This would be a good time to sketch a picture!
+    
+- Class: cmd_question
+  Output: To find the left tail area, or P(Z < -1), type pnorm(-1) and press Enter.
+  CorrectAnswer: pnorm(-1)
+  AnswerTests: omnitest(correctExpr = 'pnorm(-1)')
+  Hint: Type pnorm(-1) and press Enter.
+  
+- Class: cmd_question
+  Output: To find the right tail area, or P(Z > 1), type 1-pnorm(1) and press Enter.
+  CorrectAnswer: 1-pnorm(1)
+  AnswerTests: omnitest(correctExpr = '1-pnorm(1)')
+  Hint: Type 1-pnorm(1) and press Enter.
+  
+- Class: cmd_question
+  Output: Great, let's put that all together to find the area under the curve between -1 and 1,
+    or P(-1 < Z < 1). We use [(area under entire curve) - (right tail area) - (left tail area)] or 
+    [1 - (1-pnorm(1)) - pnorm(-1)]. This simplifies to pnorm(1)-pnorm(-1). Type either 
+    pnorm(1)-pnorm(-1) OR 1 - (1-pnorm(1)) - pnorm(-1) and press Enter.
+  CorrectAnswer: pnorm(1)-pnorm(-1)
+  AnswerTests: any_of_exprs('pnorm(1)-pnorm(-1)', '1 - (1-pnorm(1)) - pnorm(-1)')
+  Hint: Type pnorm(1)-pnorm(-1) and press Enter.
+  
+- Class: text
+  Output: This is the 68% part of the 68-95-99.7 rule! Let's try it for the area within 2 standard
+    deviations. Revise your picture to include z=-2 and z=2. 
+    
+- Class: cmd_question
+  Output: Let's put this into R using the same approach as before, but now we are going to use our
+    picture to help us skip a couple of steps. We want [1 - (1-pnorm(2)) - pnorm(-2)], which will
+    simplify to pnorm(2)-pnorm(-2). Type either pnorm(2)-pnorm(-2) OR 1 - (1-pnorm(2)) - pnorm(-2)
+    and press Enter.
+  CorrectAnswer: pnorm(2)-pnorm(-2)
+  AnswerTests: any_of_exprs('pnorm(2)-pnorm(-2)', '1 - (1-pnorm(2)) - pnorm(-2)')
+  Hint: Type pnorm(2)-pnorm(-2) and press Enter.
+  
+- Class: cmd_question
+  Output: Last one! Let's examine the area within 3 standard deviations. Update your picture and
+    use the R code from the previous questions as a guide to find this area.
+  CorrectAnswer: pnorm(3)-pnorm(-3)
+  AnswerTests: any_of_exprs('pnorm(3)-pnorm(-3)', '1 - (1-pnorm(3)) - pnorm(-3)')
+  Hint: Use the R code from the previous question as a guide to find the area under the curve 
+    between z=-3 and z=3.
+    
+- Class: cmd_question
+  Output: What percent of a standard normal distribution N(mu = 0,sigma = 1) is found in the region
+    Z < -1.35? This is the same as asking for P(Z < -1.35). Be sure to draw a graph. Recall that pnorm(z)
+    gives the left tail area for a Z-score. 
+  CorrectAnswer: pnorm(-1.35)
+  AnswerTests: omnitest(correctExpr = 'pnorm(-1.35)')
+  Hint: Type pnorm(z), replacing z with the appropriate Z-score, and press Enter.
+  
+- Class: cmd_question
+  Output: What percent of a standard normal distribution N(mu = 0,sigma = 1) is found in the region
+    Z > 1.48? This is the same as asking for P(Z > 1.48). Be sure to draw a graph. Recall that pnorm(z)
+    gives the left tail area for a Z-score. 
+  CorrectAnswer: 1-pnorm(1.48)
+  AnswerTests: omnitest(correctExpr = '1-pnorm(1.48)')
+  Hint: We want the right tail area, so we need to take 1-(left area)
+  
+- Class: cmd_question
+  Output: What percent of a standard normal distribution N(mu = 0,sigma = 1) is found in the region
+    -0.4 < Z < 1.5? This is the same as asking for P(-0.4 < Z < 1.5). Be sure to draw a graph.
+    Recall that pnorm(z) gives the left tail area for a Z-score. 
+  CorrectAnswer: pnorm(1.5)-pnorm(-0.4)
+  AnswerTests: any_of_exprs('pnorm(1.5)-pnorm(-0.4)', '1-(1-pnorm(1.5))-pnorm(-0.4)')
+  Hint: Check your graph! Remember what we did for our 68-95-99.7 problem.
+  
+- Class: cmd_question
+  Output: What percent of a standard normal distribution N(mu = 0,sigma = 1) is found in the region
+    |Z| > 2? This is the same as asking for P(|Z| > 2). Be sure to draw a graph. Recall that pnorm(z) 
+    gives the left tail area for a Z-score. 
+  CorrectAnswer: pnorm(2)-pnorm(-2)
+  AnswerTests: any_of_exprs('pnorm(2)-pnorm(-2)', '1-(1-pnorm(2))-pnorm(-2)')
+  Hint: P(|Z| > 2) is the same as P(-2 < Z < 2).
+  
+- Class: text
+  Output: The average daily high temperature in June in LA is 77 degrees F with a standard deviation 
+    of 5 degrees F. It can be assumed that they to follow a normal distribution. We use the following 
+    equation to convert degrees F (Fahrenheit) to degrees C (Celsius), C = (F − 32) × (5/9).
+    
+- Class: cmd_question
+  Output: What is the mean of the distribution of temperature in degrees Celcius?
+  CorrectAnswer: (77-32)*(5/9) = 25
+  AnswerTests: omnitest(correctVal=25)
+  Hint: Notice that the Fahrenheit to Celcius equation looks a lot like the Z-score equation! Use it to
+    rescale the distribution from Celcius to Fahrenheit.
+    
+- Class: cmd_question
+  Output: What is the standard deviation of temperature in degrees Celcius? Round your answer to 2 decimal
+    places.
+  CorrectAnswer: 5*(5/9) = 2.78
+  AnswerTests: omnitest(correctVal=2.78)
+  Hint: Notice that moving the normal distribution right or left (by changing the mean) does not change
+    the standard deviation. Therefore you can ignore the directional shift (subtracting 32) when 
+    finding the new standard deviation. 
+    
+- Class: text
+  Output: Now we want to find the probability of observing a 28 degrees C temperature or higher in June 
+    in LA.
 
-
+- Class: cmd_question
+  Output: First, find the appropriate Z-score for a temperature or 28 degrees C. Round your answer to 
+    two decimal places.
+  CorrectAnswer: (28-25)/2.78 = 1.08
+  AnswerTests: omnitest(correctVal = 1.08)
+  Hint: z = (x - mu)/sigma
+  
+- Class: cmd_question
+  Output: Great, now use this z-score to calculate the probability of observing a 28 degrees C 
+    temperature or higher in June in LA. Enter your solution in terms of the pnorm(z) command.
+    Recall that pnorm(z) gives the left-tail area for z. 
+  CorrectAnswer: 1-pnorm(1.08)
+  AnswerTests: omnitest(correctExpr = '1-pnorm(1.08)')
+  Hint: We want the right-tail area for z=1.08. 
+  
+- Class: text
+  Output: Finally, we want to estimate the IQR of the temperatures (in degrees C) in June in LA.
+    Recall that IQR = Q3 - Q1, the 75th and 25th percentiles, respectively. 
+  
+- Class: cmd_question
+  Output: First, let's find the z-score for Q3. Enter your solution in terms of the R command 
+    qnorm(p). Recall that qnorm(p) will give the Z-score for a percentile p. 
+  CorrectAnswer: qnorm(0.75)
+  AnswerTests: omnitest(correctExpr = 'qnorm(0.75)')
+  Hint: We want to find the the 75th percentile using qnorm(p). The 75th percentile is the point
+    at which 75% of the data is lower than that value.
+    
+- Class: cmd_question
+  Output: Now we want to find the temperate (in degrees C) that corresponds to this Z-score. Use
+    the Z-score formula to find this value. Report your answer rounded to two decimal places.
+    Recall that our distribution is a N(25, 2.78).
+  CorrectAnswer: qnorm(0.75)*2.78 + 25 = 26.88
+  AnswerTests: any_of_exprs('qnorm(0.75)*2.78 + 25', '26.86', '26.87', '26.88')
+  Hint: Plug your Z-score from the previous question into the Z-score formula and solve for x.
+    Round your answer to two decimal places. 
+    
+- Class: cmd_question
+  Output: Next, let's find the z-score for Q1. Enter your solution in terms of the R command 
+    qnorm(p). Recall that qnorm(p) will give the Z-score for a percentile p. 
+  CorrectAnswer: qnorm(0.25)
+  AnswerTests: omnitest(correctExpr = 'qnorm(0.25)')
+  Hint: We want to find the the 25th percentile using qnorm(p). The 25th percentile is the point
+    at which 25% of the data is lower than that value.
+    
+- Class: cmd_question
+  Output: Now we want to find the temperate (in degrees C) that corresponds to this Z-score. Use
+    the Z-score formula to find this value. Report your answer rounded to two decimal places.
+    Recall that our distribution is a N(25, 2.78).
+  CorrectAnswer: qnorm(0.25)*2.78 + 25 = 23.12
+  AnswerTests: any_of_exprs('qnorm(0.25)*2.78 + 25', '23.12', '23.13', '23.14')
+  Hint: Plug your Z-score from the previous question into the Z-score formula and solve for x.
+    Round your answer to two decimal places.
+    
+- Class: cmd_question
+  Output: Finally we can use these values to find the IQR. To remove any rounding error, Q1 = 23.13 
+    and Q3 = 26.86. Find the IQR using these values.
+  CorrectAnswer: Q3 - Q1 = 26.86 - 23.13 = 3.73
+  AnswerTests: omnitest(correctVal = 3.73)
+  Hint: IQR = Q3 - Q1
   
 - Class: text
   Output: You have successfully completed Lab 5! Way to go!
