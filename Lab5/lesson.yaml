@@ -135,11 +135,11 @@
   
 - Class: cmd_question
   Output: What percent of a standard normal distribution N(mu = 0,sigma = 1) is found in the region
-    |Z| > 2? This is the same as asking for P(|Z| > 2). Be sure to draw a graph. Recall that pnorm(z) 
+    |Z| < 2? This is the same as asking for P(|Z| < 2). Be sure to draw a graph. Recall that pnorm(z) 
     gives the left tail area for a Z-score. 
   CorrectAnswer: pnorm(2)-pnorm(-2)
   AnswerTests: any_of_exprs('pnorm(2)-pnorm(-2)', '1-(1-pnorm(2))-pnorm(-2)')
-  Hint: P(|Z| > 2) is the same as P(-2 < Z < 2).
+  Hint: P(|Z| < 2) is the same as P(-2 < Z < 2).
   
 - Class: text
   Output: The average daily high temperature in June in LA is 77 degrees F with a standard deviation 
