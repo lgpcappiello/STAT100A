@@ -14,8 +14,159 @@
   Hint: If you accidentally ended up in the wrong lab, press Esc to leave Swirl. 
     Then type swirl() and press Enter to start over.
   
-
-
+- Class: text
+  Output: For today's lab, we are going to work on concepts related to the binomial distribution.
+  
+- Class: cmd_question
+  Output: Let's start by thinking about "n choose k". How many ways can you arrange 3 successes (and
+    5 failures) in 8 trials?
+  CorrectAnswer: 8 choose 3 = 8!/[3!(5-3)!] = 56
+  AnswerTests: omnitest(correctVal=56)
+  Hint: Find 8 choose 3.
+  
+- Class: cmd_question
+  Output: How many ways can you arrange n successes (and 0 failures) in n trials?
+  CorrectAnswer: n choose n = n!/[n!(n-n)!] = 1
+  AnswerTests: omnitest(correctVal=1)
+  Hint: Carefully write out the formula for n choose n.
+  
+- Class: cmd_question
+  Output: How many ways can you arrange 1 successes (and n-1 failures) in n trials?
+  CorrectAnswer: n choose 1 = n!/[1!(n-1)!] = n
+  AnswerTests: omnitest(correctExpr='n')
+  Hint: Carefully write out the formula for n choose 1.
+  
+- Class: text
+  Output: Now that we've thought about n choose k, we want to work with the binomial distribution.
+  
+- Class: text 
+  Output: Your textbook claims that about 70% of 18-20 year olds consume alcoholic beverages in 
+    any given year. Consider a random sample of fifty 18-20 year olds.
+    
+- Class: cmd_question
+  Output: How many people from your sample would you expect to have consumed alcoholic beverages in
+    the previous year? 
+  CorrectAnswer: 50*0.7=35
+  AnswerTests: omnitest(correctVal=35)
+  Hint: What is the expected value for a binomial distribution?
+  
+- Class: cmd_question
+  Output: Estimate the expected standard deviation for this sample. Round your answer to two decimal 
+    places.
+  CorrectAnswer: sqrt(np(1-p)) = sqrt(50*0.7*0.3)
+  AnswerTests: omnitest(correctVal=3.24)
+  Hint: What is the formula for the standard deviation of a binomial distribution?
+  
+- Class: cmd_question
+  Output: What is the probability that between (and including) 34 and 36 people in this sample 
+    have consumed alcoholic beverages in the past year? Note that this is P(34 <= X <= 36). Round
+    your answer to two decimal places.
+  CorrectAnswer: P(X = 34) + P(X = 35) + P(X = 36) = 0.1147 + 0.1223 + 0.1189 = 0.3559 -> 0.36
+  AnswerTests: any_of_exprs('0.36','.36','0.35','.35')
+  Hint: P(34 <= X <= 36) = P(X = 34) + P(X = 35) + P(X = 36)
+  
+- Class: text
+  Output: Sickle cell anemia is a genetic blood disorder where red blood cells lose their 
+    flexibility and assume an abnormal, rigid, “sickle” shape, which results in a risk of various 
+    complications. If both parents are carriers of the disease, then a child has a 25% chance of 
+    having the disease (X), 50% chance of being a carrier (Y), and 25% chance of neither having the 
+    disease nor being a carrier (Z). 
+    
+- Class: cmd_question
+  Output: If two parents who are carriers of the disease have 3 children, what is the probability that 
+    two of those children will have the disease? Round your answer to two decimal places.
+  CorrectAnswer: P(X = 2) = (3 choose 2) * (0.25)^2 * (1-0.25)^1 = 0.14
+  AnswerTests: omnitest(correctVal=0.14)
+  Hint: There are n=3 children and each has a 25% chance of having the disease.
+  
+- Class: cmd_question
+  Output: If two parents who are carriers of the disease have 3 children, what is the probability that 
+    none of those children will have the disease? Round your answer to two decimal places.
+  CorrectAnswer: P(X = 0) = (3 choose 0) * (0.25)^0 * (1-0.25)^3 = 0.42
+  AnswerTests: omnitest(correctVal=0.42)
+  Hint: There are n=3 children and each has a 25% chance of having the disease.
+  
+- Class: cmd_question
+  Output: If two parents who are carriers of the disease have 3 children, what is the probability that 
+    at least one of those children will be a carrier? Do not round your answer.
+  CorrectAnswer: P(Y >= 1) = P(Y > 0) = 1 - P(Y = 0) = 1 - 0.125 = 0.875
+  AnswerTests: omnitest(correctVal=0.875)
+  Hint: There are n=3 children and each has a 50% chance of neither having the disease nor being a 
+    carrier.
+  
+- Class: text
+  Output: For Lab 5, we used an R command pnorm to find the left tail area for a normal distribution.
+    For the binomial distribution, we have a command that will tell us the probability that we see
+    exactly k successes. This is the dbinom() command.
+    
+- Class: text
+  Output: We need to tell the dbinom() command our values for k, n, and p. Recall that k is the 
+    number of successes we are interested in, n is the total number of trials, and p is the 
+    probability of a success.
+    
+- Class: cmd_question
+  Output: Let's try this out. If we flip a fair coin 10 times and want to know the probability of getting
+    exactly 3 heads, then n=10, k=3, and p=0.5. To find this probability, type dbinom(3, size=10, prob=0.5) 
+    and press Enter.
+  CorrectAnswer: dbinom(3, size=10, prob=0.5)
+  AnswerTests: any_of_exprs('dbinom(3, size=10, prob=0.5)','dbinom(3, 10, 0.5)')
+  Hint: Type dbinom(3, size=10, prob=0.5) and press Enter.
+  
+- Class: text
+  Output: Great! We are not going to focus on this R command because the binomial distribution is 
+    fairly manageable algebraically. You will be expected to be able to work these calculations by 
+    hand (with the help of a formula sheet and a calculator, of course).
+    
+- Class: text
+  Output: One place where you will not be expected to work by hand is the normal approximation to
+    the binomial distribution.
+  
+- Class: cmd_question
+  Output: Suppose you have 100 trials and a probability of success p=0.3. Let's check that this is
+    appropriate for the normal approximation. First, what is np?
+  CorrectAnswer: np = 100*0.3 = 30
+  AnswerTests: omnitest(correctVal=30)
+  Hint: n=100 and p=0.3
+  
+- Class: cmd_question
+  Output: Great, np is greater than 10! Now let's check n(1-p). Find this value now.
+  CorrectAnswer: n(1-p) = 100*0.7 = 70
+  AnswerTests: omnitest(correctVal=70)
+  Hint: n=100 and p=0.3
+  
+- Class: cmd_question
+  Output: np and n(1-p) are both greater than 10, so we're set to jet. What is the mean of the normal 
+    distribution that we will use to approximate this binomial distribution? 
+  CorrectAnswer: np = 30
+  AnswerTests: omnitest(correctVal=30)
+  Hint: How do we calculate mu for the normal approximation to the binomial distribution?
+  
+- Class: cmd_question
+  Output: What is the standard deviation of the normal distribution that we will use to approximate this 
+    binomial distribution? Round your answer to 2 decimal places.
+  CorrectAnswer: sqrt(np(1-p)) = 4.58
+  AnswerTests: omnitest(correctVal=4.58)
+  Hint: How do we calculate sigma for the normal approximation to the binomial distribution?
+    
+- Class: cmd_question
+  Output: Using the normal approximation to our binomial n=100 p=0.3 distribution, we want to find the 
+    probability that there are 38 or fewer successes. Recall that for an upper cut-off value, we want
+    to improve our estimate by adding 0.5; for a lower cut-off value, we subtract 0.5. Find the Z-score 
+    for this adjusted cut-off value. Round your answer to two decimal places.
+  CorrectAnswer: (38.5-30)/4.58 = 1.86
+  AnswerTests: omnitest(correctVal=1.86)
+  Hint: We found mu=30 and sigma=4.58 for our normal approximation. Our x-value will be 38 + 0.5 = 38.5
+  
+- Class: cmd_question
+  Output: Use the Z-score and the pnorm() command to find the probability that there are 38 or fewer 
+    successes. Recall that pnorm(z) will give the left tail area, where you plug your Z-score in for z.
+  CorrectAnswer: pnorm(1.86)
+  AnswerTests: omnitest(correctExpr='pnorm(1.86)')
+  Hint: z = 1.86
+  
+- Class: text
+  Output: If we calculate this using only the binomial distribution, we get a probability of 0.966.
+    This is quite close to our normal approximation!
   
 - Class: text
   Output: You have successfully completed Lab 6! Way to go!
