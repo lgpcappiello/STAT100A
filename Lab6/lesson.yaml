@@ -30,10 +30,11 @@
   AnswerTests: omnitest(correctVal=1)
   Hint: Carefully write out the formula for n choose n.
   
-- Class: cmd_question
+- Class: mult_question
   Output: How many ways can you arrange 1 successes (and n-1 failures) in n trials?
-  CorrectAnswer: n choose 1 = n!/[1!(n-1)!] = n
-  AnswerTests: omnitest(correctExpr='n')
+  CorrectAnswer: n choose 1 = n!/(1!*(n-1)!) = n
+  AnswerChoices: n; n-1; 1; n/2
+  AnswerTests: omnitest(correctVal='n')
   Hint: Carefully write out the formula for n choose 1.
   
 - Class: text
