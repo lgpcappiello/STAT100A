@@ -150,8 +150,8 @@
     
 - Class: cmd_question
   Output: Using the normal approximation to our binomial n=100 p=0.3 distribution, we want to find the 
-    probability that there are 38 or fewer successes. Find the Z-score for this adjusted cut-off value. 
-    Round your answer to two decimal places.
+    probability that there are 38 or fewer successes. Find the Z-score for this value. Round your 
+    answer to two decimal places.
   CorrectAnswer: (38-30)/4.58 = 1.75
   AnswerTests: omnitest(correctVal=1.75)
   Hint: We found mu=30 and sigma=4.58 for our normal approximation.
