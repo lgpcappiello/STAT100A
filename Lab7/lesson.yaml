@@ -152,9 +152,9 @@
   Output: Suppose the students decide to sample again, this time collecting 90 students per sample, 
     and they again collect 1,000 samples. They build a new distribution of sample proportions. How 
     will the variability of this new distribution compare to the value you just calculated?
-  CorrectAnswer: it will increase
+  CorrectAnswer: it will decrease
   AnswerChoices: it will increase; it will decrease; it will not change
-  AnswerTests: omnitest(correctVal='it will increase')
+  AnswerTests: omnitest(correctVal='it will decrease')
   Hint: How does sample size impact standard error?
   
 - Class: text
