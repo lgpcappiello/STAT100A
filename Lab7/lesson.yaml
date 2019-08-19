@@ -14,8 +14,148 @@
   Hint: If you accidentally ended up in the wrong lab, press Esc to leave Swirl. 
     Then type swirl() and press Enter to start over.
   
+- Class: text
+  Output: In this lab, we will go over the Poisson distribution and will focus on point estimates 
+    and sampling variability. 
+    
+- Class: text
+  Output: For Monday through Thursday when there isn’t a holiday, the average number of vehicles that 
+    visit a particular retailer between 2pm and 3pm each afternoon is 6.5, and the number of cars that 
+    show up on any given day follows a Poisson distribution.
+    
+- Class: cmd_question
+  Output: What is the probability that exactly 5 cars will show up next Monday? Round your answer to
+    three decimal places.
+  CorrectAnswer: P(X=5) = 0.145
+  AnswerTests: omnitest(correctVal=0.145)
+  Hint: Find P(X=5) for a Poisson distribution with mean 6.5
+  
+- Class: cmd_question
+  Output: What is the probability that 0, 1, or 2 cars will show up next Monday between 2pm and 3pm? 
+    Round your answer to three decimal places.
+  CorrectAnswer: 0.0430
+  AnswerTests: any_of_exprs('0.043','0.044')
+  Hint: Find P(X <= 2).
+  
+- Class: cmd_question
+  Output: We want to know if it would be unusal to see an observation of 10 cars. Calculate the Z-score 
+    for this observation. Round your Z-score to three decimal places.
+  CorrectAnswer: (10-6.5)/sqrt(6.5) = 1.373
+  AnswerTests: omnitest(correctVal=1.373)
+  Hint: Find the Z-score for X=10 cars. Use the Poisson distribution to find the appropriate
+    mean and standard deviation.
+    
+- Class: text
+  Output: 10 cars is 1.37 standard deviations above the mean, so it is not considered to be an unusual
+    observation. We would not be surprised to see an observation of 10 vehicles.
+  
+- Class: cmd_question
+  Output: To find P(X=x) for a Poisson distribution with parameter lambda, we can also use the R 
+    command dpois(x, lambda). Suppose we have a Poisson distribution with lambda = 7. Let's find
+    the probability that X=6. Type dpois(x=6, lambda=7) and press Enter.
+  CorrectAnswer: dpois(x=6, lambda=7)
+  AnswerTests: omnitest(correctExpr='dpois(x=6, lambda=7)')
+  Hint: Type dpois(x=6, lambda=7) and press Enter.  
+    
+- Class: text
+  Output: For each of the following questions, determine whether the parameter of interest is a 
+    proportion or a mean.
+  
+- Class: mult_question
+  Output: A poll shows that 64% of Americans personally worry a great deal about federal spending and 
+    the budget deficit.
+  CorrectAnswer: proportion
+  AnswerChoices: mean; proportion; neither
+  AnswerTests: omnitest(correctVal='proportion')
+  Hint: Are we interested in a mean or a proportion?
+  
+- Class: mult_question
+  Output: A survey reports that local TV news has shown a 17% increase in revenue within a two year 
+    period while newspaper revenues decreased by 6.4% during this time period.
+  CorrectAnswer: mean
+  AnswerChoices: mean; proportion; neither
+  AnswerTests: omnitest(correctVal='mean')
+  Hint: Are we interested in a mean or a proportion?
+  
+- Class: mult_question
+  Output: In a survey, high school and college students are asked whether or not they use geolocation 
+    services on their smart phones.
+  CorrectAnswer: proportion
+  AnswerChoices: mean; proportion; neither
+  AnswerTests: omnitest(correctVal='proportion')
+  Hint: Are we interested in a mean or a proportion?
+  
+- Class: mult_question
+  Output: In a survey, smart phone users are asked how many times they used a web-based taxi 
+    service over the last year.
+  CorrectAnswer: mean
+  AnswerChoices: mean; proportion; neither
+  AnswerTests: omnitest(correctVal='mean')
+  Hint: Are we interested in a mean or a proportion?
+  
+- Class: text
+  Output: In a random sample 765 adults in the United States, 322 say they could not cover a $400 
+    unexpected expense without borrowing money or going into debt. Use this information to answer
+    the next few questions.
+    
+- Class: cmd_question
+  Output: What is the point estimate for the parameter of interest? Enter your answer as a whole number
+    or a formula, e.g., (2+2)/3
+  CorrectAnswer: 322/765 = 0.42
+  AnswerTests: omnitest(correctVal=322/765)
+  Hint: Are we interested in a mean or a proportion? How do we calculate each?
+  
+- Class: cmd_question
+  Output: What is the estimated standard error for this point estimate? Round your answer to three 
+    decimal places.
+  CorrectAnswer: sqrt(((322/765)*(1 - 322/765))/765) = 0.0178
+  AnswerTests: omnitest(correctVal=0.018)
+  Hint: How do we calculate standard error for an estimate?
+  
+- Class: cmd_question
+  Output: Suppose the true population value was found to be 40%. Use this proportion to recompute 
+    the standard error. Round your answer to three decimal places.
+  CorrectAnswer: sqrt((0.4*(1 - 0.4))/765) = 0.0177
+  AnswerTests: omnitest(correctVal=0.018)
+  Hint: How do we calculate standard error for an estimate?
 
-
+- Class: text
+  Output: Right! Notice that, even though the estimate was slightly different from the truth, 
+    the standard error is the same when rounded to three decimal places! 
+    
+- Class: text
+  Output: Of all freshman at a large college, 16% made the dean’s list in the current year. 
+    As part of a class project, students randomly sample 40 students and check if those students 
+    made the list. They repeat this 1,000 times and build a distribution of sample proportions.
+    
+- Class: mult_question
+  Output: What is this distribution called?
+  CorrectAnswer: sampling distribution
+  AnswerChoices: sampling distribution; Poisson distribution; binomial distribution; proportion distribution
+  AnswerTests: omnitest(correctVal='sampling distribution')
+  Hint: Remember what we went over in lecture today.
+  
+- Class: mult_question
+  Output: Would you expect the shape of this distribution to be symmetric, right skewed, or left skewed?
+  CorrectAnswer: symmetric
+  AnswerChoices: symmetric; right skewed; left skewed
+  AnswerTests: omnitest(correctVal='symmetric')
+  Hint: What does the Central Limit Theorem tell us?
+  
+- Class: cmd_question
+  Output: Calculate the variability of this distribution. Round your answer to three decimal places.
+  CorrectAnswer: sqrt((0.16*(1 - 0.16))/40) = 0.0580
+  AnswerTests: omnitest(correctVal=0.058)
+  Hint: How do we calculate standard error for an estimate?
+  
+- Class: mult_question
+  Output: Suppose the students decide to sample again, this time collecting 90 students per sample, 
+    and they again collect 1,000 samples. They build a new distribution of sample proportions. How 
+    will the variability of this new distribution compare to the value you just calculated?
+  CorrectAnswer: it will increase
+  AnswerChoices: it will increase; it will decrease; it will not change
+  AnswerTests: omnitest(correctVal='it will increase')
+  Hint: How does sample size impact standard error?
   
 - Class: text
   Output: You have successfully completed Lab 7! Way to go!
