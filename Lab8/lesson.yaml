@@ -14,8 +14,223 @@
   Hint: If you accidentally ended up in the wrong lab, press Esc to leave Swirl. 
     Then type swirl() and press Enter to start over.
   
+- Class: text
+  Output: Today we will be reviewing concepts from Chapter 5, including confidence intervals and thinking
+    about hypothesis testing. 
+    
+- Class: text
+  Output: A poll conducted in 2013 found that 52% of U.S. adult Twitter users get at least some news on 
+    Twitter. The standard error for this estimate was 2.4%, and a normal distribution may be used to model 
+    the sample proportion. We want to use this information to construct a 99% confidence interval.
+    
+- Class: cmd_question
+  Output: What is alpha, or our significance level, for the desired confidence interval? Make sure to enter
+    this value as a decimal, NOT as a percent.
+  CorrectAnswer: 1 - 0.99 = 0.01
+  AnswerTests: omnitest(correctVal=0.01)
+  Hint: Recall that confidence level = 1 - alpha.
+  
+- Class: cmd_question
+  Output: We can use alpha/2 to find the critical value. We will use one of our R functions for the normal
+    distribution. Type qnorm(0.01/2) and press Enter. This will give us the negative version of our critical
+    value z.
+  CorrectAnswer: qnorm(0.01/2)
+  AnswerTests: omnitest(correctExpr='qnorm(0.01/2)')
+  Hint: Type qnorm(0.01/2) and press Enter.
+  
+- Class: cmd_question
+  Output: Calculate the margin of error for this confidence interval. Round your answer to three decimal 
+    places.
+  CorrectAnswer: MoE = z * SE = 2.58 * 0.024 = 0.062
+  AnswerTests: omnitest(correctVal=0.062)
+  Hint: Check the original problem statement for the standard error. What's our formula for margin of error?
+  
+- Class: cmd_question
+  Output: Use your margin of error to find the lower bound for the 99% confidence interval.
+  CorrectAnswer: PE - MoE = 0.52 - 0.062 = 0.458
+  AnswerTests: omnitest(correctVal=0.458)
+  Hint: The lower bound will be point estimate - margin of error.
+  
+- Class: cmd_question
+  Output: Use your margin of error to find the upper bound for the 99% confidence interval.
+  CorrectAnswer: PE - MoE = 0.52 + 0.062 = 0.582
+  AnswerTests: omnitest(correctVal=0.582)
+  Hint: The lower bound will be point estimate + margin of error.
+  
+- Class: mult_question
+  Output: Great, if all went well, you found the interval (0.458, 0.582). Which is the best interpretation
+    of this interval?
+  CorrectAnswer: We can be 95% confident that 45.8% to 58.2% of U.S. adult Twitter users get at least 
+    some news on Twitter.
+  AnswerChoices: We can be 95% confident that 45.8% to 58.2% of U.S. adult Twitter users get at least 
+    some news on Twitter.; We can be 95% confident that the true proportion is between 45.8% and 58.2%.;
+    There is a 95% probability that the true proportion U.S. adult Twitter users who get at least 
+    some news on Twitter is between 45.8% and 58.2%.
+  AnswerTests: omnitest(correctVal='We can be 95% confident that 45.8% to 58.2% of U.S. adult Twitter users 
+    get at least some news on Twitter.')
+  Hint: How do we interpret a confidence interval?
+  
+- Class: mult_question
+  Output: What do we mean when we say 95% confident?
+  CorrectAnswer: With repeated sampling, the true proportion will fall in our confidence intervals 95% of 
+    the time.
+  AnswerChoices: With repeated sampling, the true proportion will fall in our confidence intervals 95% of 
+    the time.;There is a 95% probability that the true proportion falls in our confidence interval.
+  AnswerTests: omnitest(correctVal='With repeated sampling, the true proportion will fall in our confidence intervals 95% of 
+    the time.')
+  Hint: This is important! Double check your notes.
+    
+- Class: mult_question
+  Output: True or false? The data provide statistically significant evidence that more than half of U.S. 
+    adult Twitter users get some news through Twitter. Use a significance level of alpha = 0.01.
+  CorrectAnswer: false
+  AnswerChoices: true, false
+  AnswerTests: omnitest(correctVal='false')
+  Hint: Use the confidence interval you created in the previous problems.
+  
+- Class: mult_question
+  Output: True or false? Since the standard error is 2.4%, we can conclude that 97.6% of all U.S. adult 
+    Twitter users were included in the study.
+  CorrectAnswer: false
+  AnswerChoices: true, false
+  AnswerTests: omnitest(correctVal='false')
+  Hint: What does standard error tell us?
+  
+- Class: mult_question
+  Output: True or false? If we want to reduce the standard error of the estimate, we should collect 
+    less data.
+  CorrectAnswer: false
+  AnswerChoices: true, false
+  AnswerTests: omnitest(correctVal='false')
+  Hint: Think carefully about the formula for standard error. What happens if we decrease our sample size?
+  
+- Class: mult_question
+  Output: True or false? If we construct a 90% confidence interval for the percentage of U.S. adults 
+    Twitter users who get some news through Twitter, this confidence interval will be wider than a 
+    corresponding 99% confidence interval.
+  CorrectAnswer: false
+  AnswerChoices: true, false
+  AnswerTests: omnitest(correctVal='false')
+  Hint: If we want to be less confident, we won't need as many values in our interval. 
+  
+- Class: text
+  Output: A store randomly samples 603 shoppers over the course of a year and finds that 142 of them made
+    their visit because of a coupon they’d received in the mail. We will construct a 95% confidence interval
+    for the fraction of all shoppers during the year whose visit was because of a coupon they’d received 
+    in the mail.
+    
+- Class: cmd_question
+  Output: What is the point estimate for the proportion of shoppers whose visit was because of a coupon 
+    they’d received in the mail? Round your answer to three decimal places.
+  CorrectAnswer: 142/603 = 0.235
+  AnswerTests: omnitest(correctVal=0.235)
+  Hint: Find the proportion of shoppers whose visit was because of a coupon they’d received in the mail.
+  
+- Class: cmd_question
+  Output: What is the standard error for the proportion of shoppers whose visit was because of a coupon 
+    they’d received in the mail? Round your answer to four decimal places.
+  CorrectAnswer: sqrt((0.235 * 0.764) / 603) = 0.0173
+  AnswerTests: omnitest(correctVal=0.0173)
+  Hint: Find the standard error based on your sample proportion and the sample size n.
+    
+- Class: cmd_question
+  Output: What is alpha, or our significance level, for the desired confidence interval? Make sure to enter
+    this value as a decimal, NOT as a percent.
+  CorrectAnswer: 1 - 0.95 = 0.05
+  AnswerTests: omnitest(correctVal=0.05)
+  Hint: Recall that confidence level = 1 - alpha.
+  
+- Class: cmd_question
+  Output: We can use alpha/2 to find the critical value. Use the qnorm function with your value for alpha/2
+    to find the negative version of our critical value z.
+  CorrectAnswer: qnorm(0.05/2) = -1.96
+  AnswerTests: any_of_exprs('qnorm(0.05/2)','qnorm(0.025)')
+  Hint: Use qnorm(a/2), replacing a with the value of alpha.
+  
+- Class: cmd_question
+  Output: Calculate the margin of error for this confidence interval. Round your answer to three decimal 
+    places.
+  CorrectAnswer: MoE = z * SE = 1.96 * 0.0173 = 0.034
+  AnswerTests: omnitest(correctVal=0.034)
+  Hint: Recall we calculated the standard error above. What's our formula for margin of error?
+  
+- Class: cmd_question
+  Output: Use your margin of error to find the lower bound for the 99% confidence interval.
+  CorrectAnswer: PE - MoE = 0.235 - 0.034 = 0.201
+  AnswerTests: omnitest(correctVal=0.201)
+  Hint: The lower bound will be point estimate - margin of error.
+  
+- Class: cmd_question
+  Output: Use your margin of error to find the upper bound for the 99% confidence interval.
+  CorrectAnswer: PE - MoE = 0.235 + 0.034 = 0.269
+  AnswerTests: omnitest(correctVal=0.269)
+  Hint: The lower bound will be point estimate + margin of error.
+  
+- Class: mult_question
+  Output: Great, if all went well, you found the interval (0.201, 0.269). Which is the best interpretation
+    of this interval?
+  CorrectAnswer: We can be 95% confident that 20.1% to 26.9% of the store’s shoppers during the year 
+    made their visit because they had received a coupon in the mail.
+  AnswerChoices: We can be 95% confident that 20.1% to 26.9% of the store’s shoppers during the year 
+    made their visit because they had received a coupon in the mail.; We can be 95% confident that the 
+    true proportion is between 20.1% and 26.9%.; There is a 95% probability that the true proportion of 
+    the store’s shoppers during the year made their visit because they had received a coupon in the mail is
+    between 20.1% and 26.9%.
+  AnswerTests: omnitest(correctVal='We can be 95% confident that 20.1% to 26.9% of the store’s shoppers during the year made their visit because they had received a coupon in the mail.')
+  Hint: How do we interpret a confidence interval?
+  
+- Class: text
+  Output: We want to use the confidence interval to test whether the true proportion of the 
+    store's shoppers that made their visit because they had received a coupon in the mail is 25%.
+    
+- Class: mult_question
+  Output: Which is the correct way to write this question as a null and alternative hypothesis?
+  CorrectAnswer: H0 p = 0.25 versus HA p =\= 0.25
+  AnswerChoices: H0 p = 0.25 versus HA p =\= 0.25; H0 p =\= 0.25 versus HA p = 0.25; H0 p <= 0.25 versus
+    HA p > 0.25; H0 p < 0.25 versus HA p => 0.25
+  AnswerTests: omnitest(correctVal='H0 p = 0.25 versus HA p =\= 0.25')
+  Hint: Think carefully about what we want to test.
+  
+- Class: mult_question
+  Output: Based on your confidence interval, is there sufficient evidence at the 0.05 level of significance 
+    to reject H0 and conclude that the true proportion of the store's shoppers that made their visit 
+    because they had received a coupon in the mail is NOT 25%?
+  CorrectAnswer: No, 0.25 is in the interval.
+  AnswerChoices: No, 0.25 is in the interval.; Yes, 0.25 is in the interval.; Unknown, we cannot use this
+    confidence interval to test at this level of significance.
+  AnswerTests: omnitest(correctVal='No, 0.25 is in the interval.')
+  Hint: How do we interpret a confidence interval?
+  
+- Class: mult_question
+  Output: Based on your confidence interval, is there sufficient evidence at the 0.01 level of significance 
+    to reject H0 and conclude that the true proportion of the store's shoppers that made their visit 
+    because they had received a coupon in the mail is NOT 25%?
+  CorrectAnswer: No, 0.25 is in the interval.
+  AnswerChoices: No, 0.25 is in the interval.; Yes, 0.25 is in the interval.; Unknown, we cannot use this
+    confidence interval to test at this level of significance.
+  AnswerTests: omnitest(correctVal='No, 0.25 is in the interval.')
+  Hint: What happens to our interval if we increase our significance level? How do we interpret a 
+    confidence interval?
+    
+- Class: mult_question
+  Output: Based on your confidence interval, is there sufficient evidence at the 0.10 level of significance 
+    to reject H0 and conclude that the true proportion of the store's shoppers that made their visit 
+    because they had received a coupon in the mail is NOT 25%?
+  CorrectAnswer: Unknown, we cannot use this confidence interval to test at this level of significance.
+  AnswerChoices: No, 0.25 is in the interval.; Yes, 0.25 is in the interval.; Unknown, we cannot use this
+    confidence interval to test at this level of significance.
+  AnswerTests: omnitest(correctVal='Unknown, we cannot use this confidence interval to test at this level of significance.')
+  Hint: What happens to our interval if we increase our significance level? How do we interpret a 
+    confidence interval?
+    
+- Class: text
+  Output: Note that at the 99% confidence level, our interval will widen. Therefore, if 0.25 is in our 95% 
+    confidence interval, it will also be in our 99% confidence interval. 
 
-
+- Class: text
+  Output: Note also that at the 90% confidence level, our interval will narrow. We would need to calculate 
+    the confidence interval at the 0.1 level of significance in order to know for sure whether 0.25 
+    appears in the interval.
   
 - Class: text
   Output: You have successfully completed Lab 8! Way to go!
