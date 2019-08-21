@@ -60,13 +60,13 @@
 - Class: mult_question
   Output: Great, if all went well, you found the interval (0.458, 0.582). Which is the best interpretation
     of this interval?
-  CorrectAnswer: We can be 95% confident that 45.8% to 58.2% of U.S. adult Twitter users get at least 
+  CorrectAnswer: We can be 99% confident that 45.8% to 58.2% of U.S. adult Twitter users get at least 
     some news on Twitter.
-  AnswerChoices: We can be 95% confident that 45.8% to 58.2% of U.S. adult Twitter users get at least 
+  AnswerChoices: We can be 99% confident that 45.8% to 58.2% of U.S. adult Twitter users get at least 
     some news on Twitter.; We can be 95% confident that the true proportion is between 45.8% and 58.2%.;
-    There is a 95% probability that the true proportion U.S. adult Twitter users who get at least 
+    There is a 99% probability that the true proportion U.S. adult Twitter users who get at least 
     some news on Twitter is between 45.8% and 58.2%.
-  AnswerTests: omnitest(correctVal='We can be 95% confident that 45.8% to 58.2% of U.S. adult Twitter users 
+  AnswerTests: omnitest(correctVal='We can be 99% confident that 45.8% to 58.2% of U.S. adult Twitter users
     get at least some news on Twitter.')
   Hint: How do we interpret a confidence interval?
   
@@ -84,7 +84,7 @@
   Output: True or false? The data provide statistically significant evidence that more than half of U.S. 
     adult Twitter users get some news through Twitter. Use a significance level of alpha = 0.01.
   CorrectAnswer: false
-  AnswerChoices: true, false
+  AnswerChoices: true; false
   AnswerTests: omnitest(correctVal='false')
   Hint: Use the confidence interval you created in the previous problems.
   
@@ -92,7 +92,7 @@
   Output: True or false? Since the standard error is 2.4%, we can conclude that 97.6% of all U.S. adult 
     Twitter users were included in the study.
   CorrectAnswer: false
-  AnswerChoices: true, false
+  AnswerChoices: true; false
   AnswerTests: omnitest(correctVal='false')
   Hint: What does standard error tell us?
   
@@ -100,7 +100,7 @@
   Output: True or false? If we want to reduce the standard error of the estimate, we should collect 
     less data.
   CorrectAnswer: false
-  AnswerChoices: true, false
+  AnswerChoices: true; false
   AnswerTests: omnitest(correctVal='false')
   Hint: Think carefully about the formula for standard error. What happens if we decrease our sample size?
   
@@ -109,7 +109,7 @@
     Twitter users who get some news through Twitter, this confidence interval will be wider than a 
     corresponding 99% confidence interval.
   CorrectAnswer: false
-  AnswerChoices: true, false
+  AnswerChoices: true; false
   AnswerTests: omnitest(correctVal='false')
   Hint: If we want to be less confident, we won't need as many values in our interval. 
   
