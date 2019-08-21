@@ -26,7 +26,7 @@
 - Class: cmd_question
   Output: What is alpha, or our significance level, for the desired confidence interval? Make sure to enter
     this value as a decimal, NOT as a percent.
-  CorrectAnswer: 1 - 0.99 = 0.01
+  CorrectAnswer: 0.01
   AnswerTests: omnitest(correctVal=0.01)
   Hint: Recall that confidence level = 1 - alpha.
   
@@ -136,7 +136,7 @@
 - Class: cmd_question
   Output: What is alpha, or our significance level, for the desired confidence interval? Make sure to enter
     this value as a decimal, NOT as a percent.
-  CorrectAnswer: 1 - 0.95 = 0.05
+  CorrectAnswer: 0.05
   AnswerTests: omnitest(correctVal=0.05)
   Hint: Recall that confidence level = 1 - alpha.
   
@@ -185,10 +185,10 @@
     
 - Class: mult_question
   Output: Which is the correct way to write this question as a null and alternative hypothesis?
-  CorrectAnswer: H0 p = 0.25 versus HA p =\= 0.25
-  AnswerChoices: H0 p = 0.25 versus HA p =\= 0.25; H0 p =\= 0.25 versus HA p = 0.25; H0 p <= 0.25 versus
+  CorrectAnswer: H0 p = 0.25 versus HA p =/= 0.25
+  AnswerChoices: H0 p = 0.25 versus HA p =/= 0.25; H0 p =/= 0.25 versus HA p = 0.25; H0 p <= 0.25 versus
     HA p > 0.25; H0 p < 0.25 versus HA p => 0.25
-  AnswerTests: omnitest(correctVal='H0 p = 0.25 versus HA p =\= 0.25')
+  AnswerTests: omnitest(correctVal='H0 p = 0.25 versus HA p =/= 0.25')
   Hint: Think carefully about what we want to test.
   
 - Class: mult_question
