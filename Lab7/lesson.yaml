@@ -137,10 +137,10 @@
   
 - Class: mult_question
   Output: Would you expect the shape of this distribution to be symmetric, right skewed, or left skewed?
-  CorrectAnswer: symmetric
+  CorrectAnswer: right skewed
   AnswerChoices: symmetric; right skewed; left skewed
-  AnswerTests: omnitest(correctVal='symmetric')
-  Hint: What does the Central Limit Theorem tell us?
+  AnswerTests: omnitest(correctVal='right skewed')
+  Hint: Is the Central Limit Theorem satisfied? What happens when we have too few expected successes?
   
 - Class: cmd_question
   Output: Calculate the variability of this distribution. Round your answer to three decimal places.
