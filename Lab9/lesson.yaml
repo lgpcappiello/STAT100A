@@ -193,8 +193,9 @@
   
 - Class: text
   Output: For this part of the lab, you will need to minimize R and use a web browser to navigate to 
-    the course website. The URL is available on iLearn or you may go to lgpcappiello.github.io and 
-    click through to Teaching and then STAT 100A Introduction to Statistics (Summer 2019, Session B).
+    the course website. DO NOT CLOSE R, JUST MINIMIZE THE WINDOW! The URL is available on iLearn or you
+    may go to lgpcappiello.github.io and click through to Teaching and then STAT 100A Introduction to 
+    Statistics (Summer 2019, Session B).
     
 - Class: text
   Output: Once on the course website, scroll down to Lab 9 and click through. Use the Google form to 
