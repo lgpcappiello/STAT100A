@@ -14,8 +14,192 @@
   Hint: If you accidentally ended up in the wrong lab, press Esc to leave Swirl. 
     Then type swirl() and press Enter to start over.
   
+- Class: text
+  Output: This lab will focus on hypothesis testing and confidence intervals for a single proportion.
+  
+- Class: text
+  Output: 400 students were randomly sampled from a large university, and 289 said they did not get 
+    enough sleep. Conduct a hypothesis test to check whether this represents a statistically significant 
+    difference from 50%, and use a significance level of 0.01.
+    
+- Class: text
+  Output: We will begin by using a confidence interval to examine this claim and then will conduct a
+    hypothesis test using both the test statistic and p-value approaches.
 
+- Class: cmd_question
+  Output: What is p hat, our point estimate?
+  CorrectAnswer: 289/400 = 0.7225
+  AnswerTests: omnitest(correctVal=289/400)
+  Hint: Use the problem statement to help calculate the point estimate.
+  
+- Class: text
+  Output: For our confidence interval, we also need the standard error and critical value.
+  
+- Class: cmd_question
+  Output: Use qnorm(alpha/2) to find -z(alpha/2).
+  CorrectAnswer: qnorm(0.01/2)
+  AnswerTests: omnitest(correctExpr='qnorm(0.01/2)')
+  Hint: Use qnorm(alpha/2), replacing alpha with the correct significance level. 
+  
+- Class: cmd_question
+  Output: Now find the standard error for p. Round your answer to 4 decimal places.
+  CorrectAnswer: 0.0224
+  AnswerTests: omnitest(correctVal=0.0224)
+  Hint: Use the formula for the standard error in a confidence interval for p. 
+  
+- Class: cmd_question
+  Output: What is the margin of error for your confidence interval? Round to 4 decimal places.
+  CorrectAnswer: 0.0577
+  AnswerTests: omnitest(correctVal=0.0577)
+  Hint: Margin of error = (critical value) x (SE)
+  
+- Class: cmd_question
+  Output: What is the upper limit of the confidence interval?
+  CorrectAnswer: 0.7225 + 0.0577 = 0.7802
+  AnswerTests: omnitest(correctVal = 0.7802)
+  Hint: Point estimate +- Margin of Error
+  
+- Class: cmd_question
+  Output: What is the lower limit of the confidence interval?
+  CorrectAnswer: 0.7225 - 0.0577 = 0.6648
+  AnswerTests: omnitest(correctVal = 0.6648)
+  Hint: Point estimate +- Margin of Error 
 
+- Class: mult_question
+  Output: Based on the confidence interval, do significantly more or less than 50% of students get 
+    enough sleep? (Is there sufficient evidence to reject the null hypothesis?)
+  CorrectAnswer: Yes, because the null proportion is not in the interval.
+  AnswerChoices: Yes, because the null proportion is in the interval.; No, because the null proportion is 
+    in the interval.; Yes, because the null proportion is not in the interval.; No, because the null 
+    proportion is not in the interval.
+  AnswerTests: omnitest(correctVal='Yes, because the null proportion is not in the interval.')
+  Hint: Based on the confidence interval, what is your conclusion?
+  
+- Class: text
+  Output: To interpret any general confidence interval, we say the following.
+  
+- Class: text
+  Output: Based on the interval, one can be (1-alpha)100% confident that the true proportion of whatever
+    we are interested in is between lower limit and upper limit.
+    
+- Class: text
+  Output: Just don't forget to fill in all of the details based on the problem statement!
+  
+- Class: text
+  Output: Let's look at our problem statement again. 400 students were randomly sampled from a large 
+    university, and 289 said they did not get enough sleep. Conduct a hypothesis test to check whether 
+    this represents a statistically significant difference from 50%, and use a significance level of 0.01.
+    
+- Class: cmd_question
+  Output: We found p hat already. Enter its value again now so that it's easy to find. 
+  CorrectAnswer: 289/400 = 0.7225
+  AnswerTests: omnitest(correctVal=289/400)
+  Hint: Use the problem statement to help calculate the point estimate.
+  
+- Class: cmd_question
+  Output: We also found the (negative of the) critical value already, but let's find that in again using 
+    qnorm(alpha/2).
+  CorrectAnswer: qnorm(0.01/2)
+  AnswerTests: omnitest(correctExpr='qnorm(0.01/2)')
+  Hint: Use qnorm(alpha/2), replacing alpha with the correct significance level. 
+  
+- Class: cmd_question
+  Output: We calculated the standard error for our confidence interval, but it will be slightly different 
+    for our test statistic. Find that value now. 
+  CorrectAnswer: 0.025
+  AnswerTests: omnitest(correctVal=0.025)
+  Hint: Use the standard error formula for the test statistic approach.
+  
+- Class: cmd_question
+  Output: Use this value to find the test statisic.
+  CorrectAnswer: 8.9
+  AnswerTests: omnitest(correctVal=8.9)
+  Hint: Use the formula for the test statisic for single proportions.
+  
+- Class: mult_question
+  Output: Based on the test statisic and critical value, what can we conclude?
+  CorrectAnswer: The test statistic is more extreme than the critical value, so we reject the null 
+    hypothesis.
+  AnswerChoices: The test statistic is more extreme than the critical value, so we reject the null 
+    hypothesis.; The test statistic is less extreme than the critical value, so we reject the null 
+    hypothesis.; The test statistic is more extreme than the critical value, so we fail to reject the null 
+    hypothesis.; The test statistic is less extreme than the critical value, so we fail to reject the null 
+    hypothesis.
+  AnswerTests: omnitest(correctVal='The test statistic is more extreme than the critical value, so we 
+    reject the null hypothesis.')
+  Hint: Remember to take the absolute values.
+  
+- Class: cmd_question
+  Output: Finally, we want to find the p-value for this problem. Recall that the p-value is 2 x P(Z < -|z|) 
+    where z is the test statistic. Find this value using 2*pnorm(-|z|).
+  CorrectAnswer: 2*pnorm(-8.9)
+  AnswerTests: omnitest(correctExpr='2*pnorm(-8.9)')
+  Hint: Make sure to replace |z| by the absolute value of your test statisic.
+  
+- Class: mult_question
+  Output: Based on the level of significance and p-value, what can we conclude?
+  CorrectAnswer: The p-value is less than alpha, so we reject the null hypothesis. 
+  AnswerChoices: The p-value is less than alpha, so we reject the null hypothesis.; The p-value is greater 
+    than alpha, so we reject the null hypothesis.; The p-value is less than alpha, so we fail to reject 
+    the null hypothesis.; The p-value is greater than alpha, so we fail to reject the null hypothesis. 
+  AnswerTests: omnitest(correctVal='The p-value is less than alpha, so we reject the null hypothesis.')
+  Hint: How do we use a p-value to draw conclusions in a hypothesis test?
+  
+- Class: mult_question
+  Output: Based on our hypothesis testing, how would we finalize our conclusion?
+  CorrectAnswer: There is sufficient evidence at the 0.01 level of 
+    significance to conclude that more than 50% of students do not get enough sleep.
+  AnswerChoices: There is insufficient evidence at the 0.01 level of significance to conclude that more 
+    than 50% of students do not get enough sleep.; There is sufficient evidence at the 0.01 level of 
+    significance to conclude that more than 50% of students do not get enough sleep.; There is sufficient 
+    evidence at the 0.01 level of significance to conclude that 50% of students do not get enough sleep.; 
+    There is sufficient evidence at the 0.01 level of significance to conclude that 72.25% of students 
+    do not get enough sleep. 
+  AnswerTests: omnitest(correctVal='There is sufficient evidence at the 0.01 level of significance to 
+    conclude that more than 50% of students do not get enough sleep.')
+  Hint: How do we interpret our conclusion from the previous problem?
+  
+- Class: text
+  Output: The General Social Survey asked 1,578 US residents, “Do you think the use of marijuana should 
+    be made legal, or not?” 61% of the respondents said it should be made legal. We want to test whether, 
+    on average, US residents approve or disapprove of legal marijuana use at the 0.05 level of significance.
+    
+- Class: cmd_question
+  Output: What is the point estimate?
+  CorrectAnswer: 0.61
+  AnswerTests: omnitest(correctVal=0.61)
+  Hint: Make sure your answer is written as a proportion and not a percent.
+  
+- Class: cmd_question
+  Output: What is the (negative of the) critical value? Use qnorm(alpha/2).
+  CorrectAnswer: qnorm(0.05/2)
+  AnswerTests: omnitest(correctExpr='qnorm(0.05/2)')
+  Hint: Use qnorm(alpha/2) with alpha from the problem statement.
+  
+- Class: cmd_question
+  Output: What is the test statistic? Round your answer to 4 decimal places.
+  CorrectAnswer: 8.7393
+  AnswerTests: omnitest(correctVal=8.7393)
+  Hint: Use the formula for the test statistic for test of one proportion. 
+  
+- Class: cmd_question
+  Output: What is the p-value? Use your test statisic (rounded to 4 decimal places) with 2*pnorm(-|z|).
+  CorrectAnswer: 2*pnorm(-8.7393)
+  AnswerTests: omnitest(correctExpr='2*pnorm(-8.7393)')
+  Hint: Replace |z| with the absolute value of your test statistic.
+  
+- Class: text
+  Output: Now we are going to work on interpreting your results.
+  
+- Class: text
+  Output: For this part of the lab, you will need to minimize R and use a web browser to navigate to 
+    the course website. The URL is available on iLearn or you may go to lgpcappiello.github.io and 
+    click through to Teaching and then STAT 100A Introduction to Statistics (Summer 2019, Session B).
+    
+- Class: text
+  Output: Once on the course website, scroll down to Lab 9 and click through. Use the Google form to 
+    finish the lab. This activity must be done during your lab time! When you are finished filling out 
+    the Google form, press Enter to continue with the lab in Swirl.
   
 - Class: text
   Output: You have successfully completed Lab 9! Way to go!
