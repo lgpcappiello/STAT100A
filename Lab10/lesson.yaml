@@ -14,8 +14,148 @@
   Hint: If you accidentally ended up in the wrong lab, press Esc to leave Swirl. 
     Then type swirl() and press Enter to start over.
   
+- Class: text
+  Output: For your final lab (!!) we are going to go over one sample t-tests and regression concepts.
+  
+- Class: text
+  Output: We will again work between Swirl (R) and a Google form. Minimize R and navigate to the course
+    website. Click the link under Lab 10. In order to complete the lab, move between R and the web 
+    browser as necessary. 
+  
+- Class: text
+  Output: Researchers interested in lead exposure due to car exhaust sampled the blood of 22 police 
+    officers subjected to constant inhalation of automobile exhaust fumes while working traffic enforcement 
+    in a primarily urban environment. The blood samples of these officers had an average lead concentration
+    of 124.32 micrograms/liter and a SD of 37.74 micrograms/liter.
+    
+- Class: text
+  Output: A previous study of individuals from a nearby suburb, with no history of exposure, found an 
+    average blood level concentration of 35 micrograms/liter. We want to know whether police officers
+    have blood lead levels different from average.
+    
+- Class: text
+  Output: Switch to the Google form now and answer the questions about the hypotheses and conditions
+    for this problem.
+    
+- Class: cmd_question
+  Output: Now we want to test your hypotheses. We will test at a significance level of 0.05. What is 
+    the null value (mu0)?
+  CorrectAnswer: 35
+  AnswerTests: omnitest(correctVal=35)
+  Hint: The null value is the assumed value in our null hypothesis.
+  
+- Class: cmd_question
+  Output: What is the mean (x bar)?
+  CorrectAnswer: 124.32
+  AnswerTests: omnitest(correctVal=124.32)
+  Hint: What is the mean lead level for the police officers?
+  
+- Class: cmd_question
+  Output: What is the standard deviation (s)?
+  CorrectAnswer: 37.74
+  AnswerTests: omnitest(correctVal=37.74)
+  Hint: What is the standard deviation of lead levels for the police officers?
+  
+- Class: cmd_question
+  Output: What are the degrees of freedom?
+  CorrectAnswer: 21
+  AnswerTests: omnitest(correctVal=21)
+  Hint: Degrees of freedom = n-1
+  
+- Class: cmd_question
+  Output: Let's put some of this information together. Find the test statistic for this problem. 
+  CorrectAnswer: 11.1009
+  AnswerTests: omnitest(correctVal=11.1009)
+  Hint: The formula for this test statistic is available on the course website in the slides and on the 
+    practice final.
+    
+- Class: cmd_question
+  Output: Let's find the critical value for this setting. For the t distibution, we will use the R function
+    qt(alpha/2, df) to find the (negative version of the) critical value. Try that now. Type qt(alpha/2, df)
+    replacing alpha by the significance level and df by the degrees of freedom calculated previously.
+  CorrectAnswer: qt(0.05/2, 21)
+  AnswerTests: omnitest(correctExpr='qt(0.05/2, 21)')
+  Hint: Use qt(alpha/2, df) with the correct values for alpha and df.
+  
+- Class: text
+  Output: It is now possible to complete this test using the test statistic approach! However, we would also
+    like to try out the p-value approach.
+    
+- Class: cmd_question
+  Output: Let's find the p-value for this test. For the left-tail area of the t-distriution, we use the R
+    command pt(-t, df) where t = |test statistic| and df is the degrees of freedom. Use the command
+    2*pt(-t, df), replacing t with |test statistic| and df with the degrees of freedom, to find the
+    p-value.
+  CorrectAnswer: 2*pt(-11.1009, 21)
+  AnswerTests: omnitest(correctExpr='2*pt(-11.1009, 21)')
+  Hint: Use 2*pt(-t, df) with the correct values for t and df.
+  
+- Class: text
+  Output: Minimize R and return to the Google form to finish Part I.
 
-
+- Class: text
+  Output: We will now turn our attention to regression.
+  
+- Class: cmd_question
+  Output: We will use one of R's built in datasets to think about regression. Type data("trees") and press
+    Enter.
+  CorrectAnswer: data("trees")
+  AnswerTests: omnitest(correctExpr='data("trees")')
+  Hint: Type data("trees") and press Enter.
+  
+- Class: cmd_question
+  Output: Great, let's see what's in this data. Type help(trees) to get the R documentation file for this
+    data. 
+  CorrectAnswer: help(trees)
+  AnswerTests: omnitest(correctExpr='help(trees)')
+  Hint: Type help(trees) and press Enter.
+  
+- Class: cmd_question
+  Output: Earlier this term, we used the attach command in R to make data easier to access. Let's do this 
+    now. Type attach(trees) and press Enter.
+  CorrectAnswer: attach(trees)
+  AnswerTests: omnitest(correctExpr='attach(trees)')
+  Hint: Type attach(trees) and press Enter.
+  
+- Class: cmd_question
+  Output: Let's see if the height of a tree is a good way to predict its girth. That is, we want to see if
+    height and girth are linearly correlated. To examine the linear correlation, we can start with a basic
+    scatterplot. Type plot(Girth ~ Height) and press Enter.
+  CorrectAnswer: plot(Girth ~ Height)
+  AnswerTests: omnitest(correctExpr='plot(Girth ~ Height)')
+  Hint: Type plot(Girth ~ Height) and press Enter. Recall that R is case sensitive!
+  
+- Class: cmd_question
+  Output: Now let's find the actual correlation coefficient. Calculating this by hand for 31 observations
+    would be extremely cumbersome! Luckily, R has a command for this. Type cor(Girth, Height) and press Enter.
+  CorrectAnswer: cor(Girth, Height)
+  AnswerTests: omnitest(correctExpr='cor(Girth, Height)')
+  Hint: Type cor(Girth, Height) and press Enter.
+    
+- Class: cmd_question
+  Output: Finally, we want to build a regression model. Type lm(Girth ~ Height) and press Enter.
+  CorrectAnswer: lm(Girth ~ Height)
+  AnswerTests: omnitest(correctExpr='lm(Girth ~ Height)')
+  Hint: Type lm(Girth ~ Height) and press Enter. 
+  
+- Class: text
+  Output: This prints the intercept and slope for the regression line. That is, y(hat) = intercept + slope*x.
+    It may be helpful to write this equation down now, using the values R printed for your regression model.
+  
+- Class: cmd_question
+  Output: Use the regression line to predict the girth of a black cherry tree that is 77 feet tall.
+  CorrectAnswer: 13.5005
+  AnswerTests: omnitest(correctVal=13.5005)
+  Hint: Use the regression line with height = 77 to predict the girth of a 77 foot tall tree.
+  
+- Class: cmd_question
+  Output: Use the regression line to predict the girth of a black cherry tree that is 150 feet tall.
+  CorrectAnswer: 32.1666
+  AnswerTests: omnitest(correctVal=32.1666)
+  Hint: Use the regression line with height = 150 to predict the girth of a 77 foot tall tree.
+  
+- Class: text
+  Output: Return to the Google form and make sure it is completely filled out before continuing with the lab
   
 - Class: text
   Output: You have successfully completed your final STAT100A lab! Way to go!
