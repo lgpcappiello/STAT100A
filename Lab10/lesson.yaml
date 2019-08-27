@@ -157,6 +157,41 @@
 - Class: text
   Output: Return to the Google form and make sure it is completely filled out before continuing with the lab
   
+- Class: cmd_question
+  Output: Finally, let's take a minute to look at the significance of our parameters. Type summary(lm(Girth ~ Height))
+    and press Enter.
+  CorrectAnswer: summary(lm(Girth ~ Height))
+  AnswerTests: omnitest(correctExpr='summary(lm(Girth ~ Height))')
+  Hint: Type summary(lm(Girth ~ Height)) and press Enter.
+ 
+- Class: text
+  Output: For each parameter, the null hypothesis is Beta = 0. If a parameter is nonsignificant, we assume either the
+    intercept is zero or the variables are not related. The test statistics are in the column labeled t value and the 
+     p-values are in the column labeled Pr(>|t|). The summary will also show the parameter estimate and its standard error.
+    
+- Class: cmd_question
+  Output: What is the p-value for the intercept?
+  CorrectAnswer: 0.30772
+  AnswerTests: omnitest(correctVal=0.30772)
+  Hint: Find the p-value for the intercept.
+  
+- Class: text
+  Output: Testing at a 0.05 level of significance, the p-value > alpha. Therefore we fail to reject the null hypothesis.
+    This means that we are unable to conclude that our intercept is nonzero.
+    
+- Class: text
+  Output: This makes sense! If we have a tree that is 0 feet tall, we'd expect the girth also to be 0.
+  
+- Class: cmd_question
+  Output: What is the p-value for the slope (height)?
+  CorrectAnswer: 0.00276
+  AnswerTests: omnitest(correctVal=0.00276)
+  Hint: Find the p-value for the slope.
+  
+- Class: text
+  Output: Testing at a 0.05 level of significance, the p-value < alpha. Therefore we reject the null hypothesis and conclude
+    that the slope is nonzero. This means that there is a significant relationship between height and girth for these trees.
+  
 - Class: text
   Output: You have successfully completed your final STAT100A lab! Way to go!
 
