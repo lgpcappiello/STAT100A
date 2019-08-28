@@ -63,7 +63,8 @@
   Hint: Degrees of freedom = n-1
   
 - Class: cmd_question
-  Output: Let's put some of this information together. Find the test statistic for this problem. 
+  Output: Let's put some of this information together. Find the test statistic for this problem. If necessary, round
+    your answer to four decimal places.
   CorrectAnswer: 11.1009
   AnswerTests: omnitest(correctVal=11.1009)
   Hint: The formula for this test statistic is available on the course website in the slides and on the 
